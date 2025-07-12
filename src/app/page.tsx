@@ -51,51 +51,47 @@ export default function Home() {
   return (
     <div className="min-h-screen" style={{ background: 'linear-gradient(to bottom, #f8f9fa 0%, #f5e9da 100%)' }}>
       {/* Navigation */}
-      <nav className="bg-white fixed w-full top-0 z-50 border-b border-gray-200">
+      <nav className="bg-white fixed w-full top-0 z-50 border-b border-gray-200 hidden md:block shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              {/* Mobile: logo */}
-              <span className="block md:hidden">
-                <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                  <Image
-                    src="/logo reflexologie 2025 lighter.jpg"
-                    alt="Logo Reflexologie"
-                    width={40}
-                    height={40}
-                    className="object-contain h-10 w-10"
-                    priority
-                  />
-                </button>
-              </span>
-              {/* Desktop: texte */}
-              <span className="hidden md:block text-2xl font-bold text-gray-900">Reflexologie plantaire</span>
-            </div>
-            {/* Menu hamburger mobile */}
-            <div className="block md:hidden">
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="p-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
-              >
-                <svg className="h-7 w-7 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
+            {/* Desktop: texte */}
+            <span className="text-2xl font-bold text-gray-900">Reflexologie plantaire</span>
+            {/* Liens de navigation desktop */}
+            <div className="flex gap-8">
+              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Réflexologie plantaire</a>
+              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Tom Robert</a>
+              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Tarif</a>
+              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Contact</a>
+              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Prise de rendez-vous</a>
+              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">La communauté</a>
             </div>
           </div>
-          {/* Menu mobile déroulant */}
-          {menuOpen && (
-            <div className="md:hidden absolute right-4 top-16 bg-white shadow-lg rounded-lg py-4 px-6 z-50 border border-gray-200">
-              <a href="#" className="block py-2 px-4 text-gray-900 hover:text-purple-600">Réflexologie plantaire</a>
-              <a href="#" className="block py-2 px-4 text-gray-900 hover:text-purple-600">Tom Robert</a>
-              <a href="#" className="block py-2 px-4 text-gray-900 hover:text-purple-600">Tarif</a>
-              <a href="#" className="block py-2 px-4 text-gray-900 hover:text-purple-600">Contact</a>
-              <a href="#" className="block py-2 px-4 text-gray-900 hover:text-purple-600">Prise de rendez-vous</a>
-              <a href="#" className="block py-2 px-4 text-gray-900 hover:text-purple-600">La communauté</a>
-            </div>
-          )}
         </div>
       </nav>
+
+      {/* Barre flottante mobile */}
+      <div className="fixed top-0 left-0 w-full h-14 bg-white/60 shadow-md flex items-center justify-between px-4 z-[100] md:hidden backdrop-blur">
+        {/* Logo à gauche */}
+        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <Image
+            src="/logo reflexologie 2025 lighter.jpg"
+            alt="Logo Reflexologie"
+            width={36}
+            height={36}
+            className="object-contain h-9 w-9"
+            priority
+          />
+        </button>
+        {/* Menu hamburger à droite */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="p-2 rounded focus:outline-none focus:ring-2 focus:ring-black"
+        >
+          <svg className="h-7 w-7 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
 
       {/* Hero Section */}
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden z-0 md:fixed md:inset-0 md:min-h-screen md:mt-0 bg-gray-400 md:bg-white py-[30rem] md:py-0">
@@ -150,9 +146,9 @@ export default function Home() {
               {/* Content */}
               <div className="lg:w-1/2">
                 <h2 className="text-5xl font-bold text-gray-900 mb-8 text-center md:text-left">Tom Robert</h2>
-                <h3 className="text-2xl font-semibold text-gray-700 mb-6 text-center">Réflexologue diplômé</h3>
+                <h3 className="text-2xl font-semibold text-gray-700 mb-6 text-center md:text-left">Réflexologue diplômé</h3>
                 
-                <div className="space-y-6 text-lg text-gray-600 text-center">
+                <div className="space-y-6 text-lg text-gray-600 text-center md:text-left">
                   <p>
                     Passionné par le bien-être et les médecines naturelles, je vous accompagne dans votre quête d'équilibre et de santé grâce à la réflexologie plantaire.
                   </p>
@@ -217,39 +213,31 @@ export default function Home() {
                 </h3>
               </div>
 
-              {/* Résumé en 4 cadres - mobile uniquement, 2 par ligne */}
-              <div className="mt-10 grid grid-cols-2 gap-4 md:hidden">
-                {/* Carte 1 : de la gauche */}
-                <div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl text-xs"
-                >
-                  <span className="text-4xl mb-2">😴</span>
-                  <h4 className="font-semibold text-base mb-1 text-black">Sommeil & Stress</h4>
-                  <p className="text-gray-600 text-xs">Améliore le sommeil, réduit le stress et l’anxiété.</p>
+              {/* Résumé en 4 cadres - desktop uniquement */}
+              <div className="mt-10 hidden md:grid md:grid-cols-4 gap-6 md:gap-8">
+                {/* Carte 1 : Sommeil & Stress */}
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                  <span className="text-4xl mb-4">😴</span>
+                  <h4 className="font-semibold text-lg mb-2 text-black">Sommeil & Stress</h4>
+                  <p className="text-gray-600 text-sm">Améliore le sommeil, réduit le stress et l’anxiété.</p>
                 </div>
-                {/* Carte 2 : de la droite */}
-                <div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl text-xs"
-                >
-                  <span className="text-4xl mb-2">🤕</span>
-                  <h4 className="font-semibold text-base mb-1 text-black">Douleurs & Tensions</h4>
-                  <p className="text-gray-600 text-xs">Soulage maux de tête, douleurs chroniques, tensions musculaires.</p>
+                {/* Carte 2 : Douleurs & Tensions */}
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                  <span className="text-4xl mb-4">🤕</span>
+                  <h4 className="font-semibold text-lg mb-2 text-black">Douleurs & Tensions</h4>
+                  <p className="text-gray-600 text-sm">Soulage maux de tête, douleurs chroniques, tensions musculaires.</p>
                 </div>
-                {/* Carte 3 : de la gauche */}
-                <div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl text-xs"
-                >
-                  <span className="text-4xl mb-2">🍽️</span>
-                  <h4 className="font-semibold text-base mb-1 text-black">Digestion & Fatigue</h4>
-                  <p className="text-gray-600 text-xs">Aide la digestion, booste l’énergie, lutte contre la fatigue.</p>
+                {/* Carte 3 : Digestion & Fatigue */}
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                  <span className="text-4xl mb-4">🍽️</span>
+                  <h4 className="font-semibold text-lg mb-2 text-black">Digestion & Fatigue</h4>
+                  <p className="text-gray-600 text-sm">Aide la digestion, booste l’énergie, lutte contre la fatigue.</p>
                 </div>
-                {/* Carte 4 : de la droite */}
-                <div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl text-xs"
-                >
-                  <span className="text-4xl mb-2">⚖️</span>
-                  <h4 className="font-semibold text-base mb-1 text-black">Hormones & Bien-être</h4>
-                  <p className="text-gray-600 text-xs">Régule les hormones, équilibre le corps, favorise le bien-être.</p>
+                {/* Carte 4 : Hormones & Bien-être */}
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                  <span className="text-4xl mb-4">⚖️</span>
+                  <h4 className="font-semibold text-lg mb-2 text-black">Hormones & Bien-être</h4>
+                  <p className="text-gray-600 text-sm">Régule les hormones, équilibre le corps, favorise le bien-être.</p>
                 </div>
               </div>
               
@@ -335,28 +323,28 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Instagram Gallery Section */}
-        <div className="relative z-10 py-20" style={{ background: 'linear-gradient(to bottom, #ECE5D9 0%, #fff 100%)' }}>
+        {/* Instagram Gallery Section + Avis */}
+        <div className="relative z-10 pt-20 pb-20" style={{ background: 'linear-gradient(to bottom, #ECE5D9 0%, #fff 100%)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl font-bold text-gray-900 mb-4">La Communauté</h2>
             </div>
-            
             {/* Instagram Feed Placeholder */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {[1,2,3,4,5,6,7,8].map((num, i) => (
+              {[1,2,3,4,5,6,7,8,9,10,11,12].map((num, i) => (
                 <motion.div
                   key={num}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="aspect-square bg-white rounded-lg overflow-hidden shadow-xl flex items-center justify-center"
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
                 >
-                  <img
+                  <Image
                     src={`/${num}.jpg`}
-                    alt={`Photo ${num}`}
-                    className="object-cover w-full h-full transition-all duration-300 hover:scale-105"
+                    alt={`Photo Instagram ${num}`}
+                    width={400}
+                    height={400}
+                    className="rounded-xl object-cover w-full h-48 md:h-64 shadow-lg"
                   />
                 </motion.div>
               ))}
@@ -371,6 +359,51 @@ export default function Home() {
           >
                 Voir le feed Instagram
           </a>
+            </div>
+            {/* Avis clients juste sous le bouton Instagram */}
+            <div className="w-screen max-w-none px-0 my-12 relative left-1/2 right-1/2 -translate-x-1/2">
+              <h2 className="text-4xl font-bold text-gray-900 mb-2 text-center">Avis clients</h2>
+              <p className="text-lg text-gray-700 text-center">Ils ont testé la réflexologie plantaire&nbsp;: voici leurs ressentis</p>
+              <div className="overflow-x-hidden mt-8">
+                <motion.div
+                  className="flex gap-6"
+                  animate={{ x: [0, -1200] }}
+                  transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+                >
+                  {[
+                    { name: "Sophie L.", text: "Un vrai moment de détente, je me sens tellement mieux après chaque séance !", note: 5 },
+                    { name: "Julien M.", text: "J'avais des douleurs au dos, c'est la seule chose qui m'a vraiment soulagé.", note: 5 },
+                    { name: "Claire P.", text: "Tom est très à l'écoute, je recommande à 100% !", note: 5 },
+                    { name: "Marc D.", text: "Je dors beaucoup mieux depuis que j'ai commencé la réflexologie.", note: 5 },
+                    { name: "Nathalie R.", text: "Une expérience unique, je ne connaissais pas du tout, je reviendrai.", note: 5 },
+                    { name: "Isabelle T.", text: "Très pro, très doux, j'ai ressenti un vrai bien-être.", note: 5 },
+                    { name: "Lucas B.", text: "J'ai testé par curiosité, et franchement, ça m'a bluffé.", note: 5 },
+                    { name: "Amandine F.", text: "Mes migraines ont diminué, merci Tom !", note: 5 },
+                    { name: "Olivier S.", text: "Ambiance zen, Tom prend le temps d'expliquer, top.", note: 5 },
+                    { name: "Julie V.", text: "J'ai offert une séance à ma mère, elle a adoré.", note: 5 },
+                    { name: "Karim E.", text: "Je recommande à tous ceux qui veulent prendre soin d'eux.", note: 5 },
+                    { name: "Marine C.", text: "Après chaque séance, je me sens reboostée.", note: 5 },
+                    { name: "Pauline G.", text: "Tom est passionné, ça se sent, super expérience.", note: 5 },
+                    { name: "Vincent H.", text: "J'étais sceptique, mais j'ai vu la différence.", note: 5 },
+                    { name: "Sébastien J.", text: "Très relaxant, parfait après une grosse semaine.", note: 5 },
+                    { name: "Aurélie N.", text: "J'ai retrouvé de l'énergie, merci !", note: 5 },
+                    { name: "Céline P.", text: "Un vrai plus pour ma récupération sportive.", note: 5 },
+                    { name: "Benoît F.", text: "Accueil chaleureux, je recommande.", note: 5 },
+                    { name: "Laure S.", text: "J'ai ressenti les effets dès la première séance.", note: 5 },
+                    { name: "Antoine Z.", text: "Une bulle de bien-être, à refaire !", note: 5 },
+                  ].map((avis, i) => (
+                    <div key={i} className="min-w-[320px] max-w-xs bg-white rounded-2xl shadow-xl p-6 flex flex-col items-start justify-between">
+                      <div className="flex items-center mb-2">
+                        {Array.from({ length: avis.note }).map((_, j) => (
+                          <span key={j} className="text-yellow-400 text-lg">★</span>
+                        ))}
+                      </div>
+                      <p className="italic text-gray-700 mb-4">"{avis.text}"</p>
+                      <span className="font-bold text-gray-900">{avis.name}</span>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>

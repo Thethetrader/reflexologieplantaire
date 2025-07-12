@@ -408,6 +408,18 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Vidéo mobile avant la boîte de contact */}
+        <div className="block md:hidden w-full">
+          <video 
+            src="/video.mp4" 
+            autoPlay 
+            muted 
+            playsInline 
+            loop
+            className="w-full h-auto rounded-xl shadow-lg object-cover"
+            style={{ maxHeight: '600px' }}
+          />
+        </div>
         {/* Section Contact */}
         <div id="contact" className="relative z-10 py-20 bg-white">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">

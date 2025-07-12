@@ -119,25 +119,25 @@ export default function Home() {
       {/* Contenu du site après le hero, sans fond supplémentaire */}
       <div className="w-full">
         {/* Practitioner Section */}
-        <div ref={praticienRef} className="relative z-10 py-20 bg-white md:mt-[100vh]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={praticienRef} className="relative z-10 py-0 md:py-20 bg-white md:mt-[100vh]">
+          <div className="max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-16">
               
               {/* Image */}
-              <div className="lg:w-1/2 flex flex-col items-center justify-start" style={{ marginTop: '-3rem' }}>
+              <div className="lg:w-1/2 flex flex-col items-center justify-start w-full md:w-auto" style={{ marginTop: '-3rem' }}>
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="w-80 h-80 rounded-lg overflow-hidden transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125"
+                  className="w-full md:w-80 md:h-80 md:rounded-lg md:overflow-hidden transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125 mb-2 md:mb-8"
                 >
                   <Image
                     src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
                     alt="Tom Robert - Réflexologue"
                     width={320}
                     height={320}
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-full md:rounded-lg"
                     style={{ objectPosition: 'center 15%' }}
                   />
                 </motion.div>
@@ -145,10 +145,9 @@ export default function Home() {
               
               {/* Content */}
               <div className="lg:w-1/2">
-                <h2 className="text-5xl font-bold text-gray-900 mb-8 text-center md:text-left">Tom Robert</h2>
-                <h3 className="text-2xl font-semibold text-gray-700 mb-6 text-center md:text-left">Réflexologue diplômé</h3>
+                <h2 className="text-xl md:text-5xl font-bold text-gray-900 mb-8 text-center md:text-left">Tom Robert</h2>
                 
-                <div className="space-y-6 text-lg text-gray-600 text-center md:text-left">
+                <div className="space-y-6 text-sm md:text-lg text-gray-600 text-center md:text-left">
                   <p>
                     Passionné par le bien-être et les médecines naturelles, je vous accompagne dans votre quête d'équilibre et de santé grâce à la réflexologie plantaire.
                   </p>
@@ -169,7 +168,7 @@ export default function Home() {
           {/* Diplômes centrés sur toute la largeur */}
           <div className="mt-12 w-full flex justify-center">
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-0 md:mb-4">
-              <div className="relative transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125">
+              <div className="relative transition-all duration-300 scale-75 md:scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125">
                 <Image
                   src="/diplome-reflexologie.jpeg"
                   alt="Diplôme de réflexologue plantaire"
@@ -180,7 +179,7 @@ export default function Home() {
                 {/* Filtre beige doux overlay */}
                 <div className="absolute inset-0 rounded-lg" style={{ background: 'rgba(236, 229, 217, 0.35)' }} />
               </div>
-              <div className="relative transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125">
+              <div className="relative transition-all duration-300 scale-75 md:scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125">
                 <Image
                   src="/certificat-reflexologie.jpeg"
                   alt="Certificat de Réflexologie Traditionnelle & Evolutive"
@@ -218,7 +217,7 @@ export default function Home() {
               </div>
 
               {/* Résumé en 4 cadres - mobile uniquement, 2 lignes de 2 cadres */}
-              <div className="grid grid-cols-2 gap-4 md:hidden mb-8">
+              <div className="grid grid-cols-2 gap-4 mb-8">
                 {/* Carte 1 : Sommeil & Stress */}
                 <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125">
                   <span className="text-3xl mb-2">😴</span>
@@ -273,7 +272,7 @@ export default function Home() {
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">MAIS EN FAIT, C'EST POUR QUI ?</h3>
                 <p className="text-lg md:text-2xl text-black font-bold uppercase mb-4">TOUS LE MONDE.</p>
                 <button
-                  className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 mt-4"
+                  className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 mt-2 md:mt-4"
                 >
                   Réserve ta séance
                 </button>

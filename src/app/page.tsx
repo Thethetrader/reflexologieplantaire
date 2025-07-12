@@ -328,7 +328,7 @@ export default function Home() {
         </div>
 
         {/* Instagram Gallery Section + Avis */}
-        <div className="relative z-10 pt-20 pb-20 min-h-[700px]" style={{ background: 'linear-gradient(to bottom, #ECE5D9 0%, #fff 100%)' }}>
+        <div className="relative z-10 pt-20 pb-2 min-h-[700px]" style={{ background: 'linear-gradient(to bottom, #ECE5D9 0%, #fff 100%)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl font-bold text-gray-900 mb-4">La Communauté</h2>
@@ -411,9 +411,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="text-center text-xs text-gray-500 mt-4">
-          <span>🔒 http://localhost:3000</span>
-        </div>
+        
       </div>
       <style jsx global>{`
         ::placeholder {

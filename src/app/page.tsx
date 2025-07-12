@@ -324,7 +324,7 @@ export default function Home() {
         </div>
 
         {/* Instagram Gallery Section + Avis */}
-        <div className="relative z-10 pt-20 pb-20" style={{ background: 'linear-gradient(to bottom, #ECE5D9 0%, #fff 100%)' }}>
+        <div className="relative z-10 pt-20 pb-20 min-h-[700px]" style={{ background: 'linear-gradient(to bottom, #ECE5D9 0%, #fff 100%)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl font-bold text-gray-900 mb-4">La Communauté</h2>
@@ -364,7 +364,7 @@ export default function Home() {
             <div className="w-screen max-w-none px-0 my-12 relative left-1/2 right-1/2 -translate-x-1/2">
               <h2 className="text-4xl font-bold text-gray-900 mb-2 text-center">Avis clients</h2>
               <p className="text-lg text-gray-700 text-center">Ils ont testé la réflexologie plantaire&nbsp;: voici leurs ressentis</p>
-              <div className="overflow-x-hidden mt-8">
+              <div className="overflow-x-hidden mt-8 pb-24">
                 <motion.div
                   className="flex gap-6"
                   animate={{ x: [0, -1200] }}

@@ -130,9 +130,9 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="w-80 h-80 rounded-lg overflow-hidden mx-auto shadow-xl"
-          >
-            <Image
+                  className="w-80 h-80 rounded-lg overflow-hidden transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125"
+                >
+                  <Image
                     src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
                     alt="Tom Robert - Réflexologue"
                     width={320}
@@ -168,24 +168,28 @@ export default function Home() {
           </div>
           {/* Diplômes centrés sur toute la largeur */}
           <div className="mt-12 w-full flex justify-center">
-            <div className="flex flex-row gap-8 items-center justify-center">
-              <div className="transition-all duration-300 hover:scale-105 hover:shadow-2xl rounded">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-0 md:mb-4">
+              <div className="relative transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125">
                 <Image
                   src="/diplome-reflexologie.jpeg"
-                  alt="Diplôme de réflexologie plantaire"
-                  width={900}
-                  height={630}
-                  className="object-contain rounded shadow-lg"
+                  alt="Diplôme de réflexologue plantaire"
+                  width={800}
+                  height={560}
+                  className="rounded-lg shadow-md w-full md:w-[800px] md:h-[560px]"
                 />
+                {/* Filtre beige doux overlay */}
+                <div className="absolute inset-0 rounded-lg" style={{ background: 'rgba(236, 229, 217, 0.35)' }} />
               </div>
-              <div className="transition-all duration-300 hover:scale-105 hover:shadow-2xl rounded">
+              <div className="relative transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125">
                 <Image
                   src="/certificat-reflexologie.jpeg"
                   alt="Certificat de Réflexologie Traditionnelle & Evolutive"
-                  width={900}
-                  height={630}
-                  className="object-contain rounded shadow-lg"
+                  width={800}
+                  height={560}
+                  className="rounded-lg shadow-md w-full md:w-[800px] md:h-[560px]"
                 />
+                {/* Filtre beige doux overlay */}
+                <div className="absolute inset-0 rounded-lg" style={{ background: 'rgba(236, 229, 217, 0.35)' }} />
               </div>
             </div>
           </div>
@@ -199,7 +203,7 @@ export default function Home() {
               {/* Question 1 */}
               <div className="text-center mb-8">
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">
-                  MAIS EN FAIT, C'EST QUOI LA RÉFLEXOLOGIE ?
+                  MAIS EN FAIT, C'EST QUOI LA RÉFLEXOLOGIE PLANTAIRE ?
                 </h3>
                 <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
                   C'est une méthode naturelle qui stimule des zones précises situées sous les pieds et dans les mains, en lien direct avec les organes, les muscles et les fonctions du corps. Le but ? Relâcher les tensions, rééquilibrer l'organisme et activer ses capacités d'auto-guérison.
@@ -208,33 +212,33 @@ export default function Home() {
               
               {/* Question 2 */}
               <div className="text-center">
-                <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-6 uppercase">
+                <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">
                   MAIS EN FAIT, TU SOIGNES QUOI ?
                 </h3>
               </div>
 
-              {/* Résumé en 4 cadres - mobile uniquement, scroll horizontal */}
-              <div className="flex gap-4 overflow-x-auto md:hidden mb-8 pb-2 -mx-4 px-4 flex-nowrap">
+              {/* Résumé en 4 cadres - mobile uniquement, 2 lignes de 2 cadres */}
+              <div className="grid grid-cols-2 gap-4 md:hidden mb-8">
                 {/* Carte 1 : Sommeil & Stress */}
-                <div className="min-w-[180px] bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center">
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125">
                   <span className="text-3xl mb-2">😴</span>
                   <h4 className="font-semibold text-base mb-1 text-black">Sommeil & Stress</h4>
                   <p className="text-gray-600 text-xs">Améliore le sommeil, réduit le stress et l’anxiété.</p>
                 </div>
                 {/* Carte 2 : Douleurs & Tensions */}
-                <div className="min-w-[180px] bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center">
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125">
                   <span className="text-3xl mb-2">💆‍♂️</span>
                   <h4 className="font-semibold text-base mb-1 text-black">Douleurs & Tensions</h4>
                   <p className="text-gray-600 text-xs">Soulage les douleurs, libère les tensions corporelles.</p>
                 </div>
                 {/* Carte 3 : Digestion */}
-                <div className="min-w-[180px] bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center">
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125">
                   <span className="text-3xl mb-2">🌱</span>
                   <h4 className="font-semibold text-base mb-1 text-black">Digestion</h4>
                   <p className="text-gray-600 text-xs">Favorise une meilleure digestion et un transit régulier.</p>
                 </div>
                 {/* Carte 4 : Énergie & Immunité */}
-                <div className="min-w-[180px] bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center">
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125">
                   <span className="text-3xl mb-2">⚡️</span>
                   <h4 className="font-semibold text-base mb-1 text-black">Énergie & Immunité</h4>
                   <p className="text-gray-600 text-xs">Booste l’énergie, stimule les défenses naturelles.</p>
@@ -242,7 +246,7 @@ export default function Home() {
               </div>
               
               {/* Section Tarif déplacée ici */}
-              <div className="relative z-10 py-2">
+              <div className="relative z-10 mb-4">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                   <h2
                     className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase text-center"
@@ -265,7 +269,7 @@ export default function Home() {
                 <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">Dans divers cabinets à Paris, à domicile, sur ton lieu de travail, à ton pop-up store, ou même en backstage avant ou après ton concert.</p>
               </div>
               {/* Question pour qui déplacée en dernier */}
-              <div className="text-center mt-8">
+              <div className="text-center mt-0">
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">MAIS EN FAIT, C'EST POUR QUI ?</h3>
                 <p className="text-lg md:text-2xl text-black font-bold uppercase mb-4">TOUS LE MONDE.</p>
                 <button
@@ -338,8 +342,8 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
-                >
-                  <Image
+          >
+            <Image
                     src={`/${num}.jpg`}
                     alt={`Photo Instagram ${num}`}
                     width={400}
@@ -406,6 +410,9 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="text-center text-xs text-gray-500 mt-4">
+          <span>🔒 http://localhost:3000</span>
         </div>
       </div>
       <style jsx global>{`

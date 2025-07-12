@@ -168,9 +168,9 @@ export default function Home() {
                 </div>
                 <h2 className="hidden md:block text-2xl font-bold text-gray-900 uppercase mb-4 text-left">TOM ROBERT</h2>
                 
-                <div className="space-y-6 text-sm md:text-lg text-gray-600 text-center md:text-left">
+                <div className="space-y-0 md:space-y-6 text-sm md:text-lg text-gray-600 text-center md:text-left">
                   <p>
-                    La réflexologie est un moyen agréable, précis et efficace de <span className="font-bold text-black">rétablir l'équilibre naturellement.</span>
+                    La réflexologie est un moyen agréable, précis et efficace de rétablir l'équilibre naturellement.
                   </p>
                   <p>
                     Je suis spécialisé en réflexologie plantaire.
@@ -179,7 +179,7 @@ export default function Home() {
                     Toutefois je connais bien les désagréments collatéraux que les positions de bureau peuvent engendrer. Je les ai éprouvés de nombreuses années.
                   </p>
                   <p>
-                    Sensible aux médecines naturelles depuis toujours, et diplômé de la FLMNE, je vous propose qu'ensemble nous <span className="font-bold text-black">évacuons les blocages et renforcions votre niveau d'énergie</span>, pour que vous rayonnez dans votre vie globale et d'entreprise.
+                    Sensible aux médecines naturelles depuis toujours, et diplômé de la FLMNE, je vous propose qu'ensemble nous évacuons les blocages et renforcions votre niveau d'énergie, pour que vous rayonnez dans votre vie globale et d'entreprise.
                   </p>
                 </div>
                 

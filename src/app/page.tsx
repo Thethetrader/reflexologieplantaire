@@ -82,6 +82,16 @@ export default function Home() {
             priority
           />
         </button>
+        {/* Bouton RDV centré */}
+        <button
+          className="absolute left-1/2 -translate-x-1/2 bg-black text-white rounded-full px-4 py-1 text-sm font-bold shadow-md"
+          onClick={() => {
+            const contact = document.getElementById('contact');
+            if (contact) contact.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          RDV
+        </button>
         {/* Menu hamburger à droite */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
@@ -131,13 +141,13 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row items-center gap-16">
               
               {/* Image */}
-              <div className="lg:w-1/2 flex flex-col items-center justify-start w-full md:w-auto" style={{ marginTop: '-3rem' }}>
+              <div className="lg:w-1/2 flex flex-col items-start justify-start w-full md:w-auto" style={{ marginTop: '-3rem' }}>
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="relative w-full md:w-80 md:h-80 md:rounded-lg md:overflow-hidden transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125 mb-2 md:mb-8"
+                  className="relative w-2/3 max-w-xs md:w-80 md:h-80 md:rounded-lg md:overflow-hidden transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125 mb-2 md:mb-8 ml-0"
                 >
                   <Image
                     src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
@@ -152,25 +162,24 @@ export default function Home() {
               
               {/* Content */}
               <div className="lg:w-1/2">
-                {/* Overlay TOM ROBERT sur la photo en mobile, au-dessus sur desktop */}
-                <div className="block md:hidden">
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-11/12 text-center z-20">
-                    <span className="inline-block text-black text-lg font-bold uppercase px-3 py-1">TOM ROBERT</span>
-                  </div>
+                {/* TOM ROBERT centré au-dessus de la photo sur mobile, au-dessus sur desktop */}
+                <div className="block md:hidden w-full mb-2">
+                  <h2 className="text-lg font-bold text-black uppercase text-center w-full">TOM ROBERT</h2>
                 </div>
                 <h2 className="hidden md:block text-2xl font-bold text-gray-900 uppercase mb-4 text-left">TOM ROBERT</h2>
                 
                 <div className="space-y-6 text-sm md:text-lg text-gray-600 text-center md:text-left">
                   <p>
-                    Passionné par le bien-être et les médecines naturelles, je vous accompagne dans votre quête d'équilibre et de santé grâce à la réflexologie plantaire.
+                    La réflexologie est un moyen agréable, précis et efficace de <span className="font-bold text-black">rétablir l'équilibre naturellement.</span>
                   </p>
-                  
                   <p>
-                    Diplômé en réflexologie et fort de plusieurs années d'expérience, j'ai à cœur de vous offrir un moment de détente profonde tout en travaillant sur vos maux du quotidien.
+                    Je suis spécialisé en réflexologie plantaire.
                   </p>
-                  
                   <p>
-                    Mon approche est personnalisée et bienveillante, adaptée à chacun pour vous permettre de retrouver harmonie et vitalité.
+                    Toutefois je connais bien les désagréments collatéraux que les positions de bureau peuvent engendrer. Je les ai éprouvés de nombreuses années.
+                  </p>
+                  <p>
+                    Sensible aux médecines naturelles depuis toujours, et diplômé de la FLMNE, je vous propose qu'ensemble nous <span className="font-bold text-black">évacuons les blocages et renforcions votre niveau d'énergie</span>, pour que vous rayonnez dans votre vie globale et d'entreprise.
                   </p>
                 </div>
                 
@@ -178,10 +187,41 @@ export default function Home() {
               
             </div>
           </div>
-          {/* Diplômes centrés sur toute la largeur */}
-          <div className="mt-12 w-full flex justify-center">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 mb-0 md:mb-4">
-              <div className="relative transition-all duration-300 scale-75 md:scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125">
+          {/* Diplômes : carrousel horizontal sur mobile, côte à côte sur desktop */}
+          <div className="mt-12 w-full">
+            {/* Mobile : carrousel horizontal infini */}
+            <div className="block md:hidden overflow-x-auto scroll-smooth snap-x snap-mandatory">
+              <motion.div
+                className="flex gap-6"
+                animate={{ x: [0, -340] }}
+                transition={{ repeat: Infinity, duration: typeof window !== 'undefined' && window.innerWidth < 768 ? 20 : 40, ease: "linear" }}
+                style={{ touchAction: 'pan-x' }}
+              >
+                {["/diplome-reflexologie.jpeg", "/certificat-reflexologie.jpeg", "/diplome-reflexologie.jpeg", "/certificat-reflexologie.jpeg"].map((src, i) => (
+                  <div key={i} className="min-w-[320px] max-w-xs flex-shrink-0 snap-center">
+                    <div className="relative transition-all duration-300 scale-75 md:scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125">
+                      <Image
+                        src={src}
+                        alt="Diplôme de réflexologie plantaire"
+                        width={800}
+                        height={560}
+                        className="rounded-lg shadow-md w-full"
+                      />
+                      <div className="absolute inset-0 rounded-lg" style={{ background: 'rgba(236, 229, 217, 0.35)' }} />
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+            {/* Desktop : côte à côte comme avant */}
+            <div className="hidden md:flex flex-row items-center justify-center gap-12 mb-4">
+              <motion.div
+                className="relative transition-all duration-300 scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+              >
                 <Image
                   src="/diplome-reflexologie.jpeg"
                   alt="Diplôme de réflexologue plantaire"
@@ -189,10 +229,15 @@ export default function Home() {
                   height={560}
                   className="rounded-lg shadow-md w-full md:w-[800px] md:h-[560px]"
                 />
-                {/* Filtre beige doux overlay */}
                 <div className="absolute inset-0 rounded-lg" style={{ background: 'rgba(236, 229, 217, 0.35)' }} />
-              </div>
-              <div className="relative transition-all duration-300 scale-75 md:scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125">
+              </motion.div>
+              <motion.div
+                className="relative transition-all duration-300 scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+              >
                 <Image
                   src="/certificat-reflexologie.jpeg"
                   alt="Certificat de Réflexologie Traditionnelle & Evolutive"
@@ -200,9 +245,8 @@ export default function Home() {
                   height={560}
                   className="rounded-lg shadow-md w-full md:w-[800px] md:h-[560px]"
                 />
-                {/* Filtre beige doux overlay */}
                 <div className="absolute inset-0 rounded-lg" style={{ background: 'rgba(236, 229, 217, 0.35)' }} />
-              </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>
@@ -218,8 +262,18 @@ export default function Home() {
                   MAIS EN FAIT, C'EST QUOI LA RÉFLEXOLOGIE PLANTAIRE ?
                 </h3>
                 <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
-                  C'est une méthode naturelle qui stimule des zones précises situées sous les pieds et dans les mains, en lien direct avec les organes, les muscles et les fonctions du corps. Le but ? Relâcher les tensions, rééquilibrer l'organisme et activer ses capacités d'auto-guérison.
+                  Pour plus de détails sur la réflexologie, voici ma définition personnelle :<br/>
+                  La réflexologie est une approche <span className="font-bold text-black">thérapeutique et préventive</span> dont les fondements tissent leurs racines dans la médecine traditionnelle chinoise, et qui <span className="font-bold text-black">actualisée à nos vies "modernes"</span> constitue une solution n-aturelle et non intrusive vers l'équilibre du corps et de son âme. Schématiquement, elle s'articule autour de la <span className="font-bold text-black">stimulation de zones réflexes</span> (des pieds, des mains, du visage, de la tête, etc.), qui par de simples mais précises pressions permettent d'agir sur la <span className="font-bold text-black">circulation de l'énergie de l'ensemble du corps.</span>
                 </p>
+                {/* Trait animé après la réponse */}
+                <motion.div
+                  initial={{ width: 0, opacity: 0 }}
+                  whileInView={{ width: '100%', opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8"
+                  style={{ maxWidth: 120 }}
+                />
               </div>
               
               {/* Question 2 */}
@@ -232,30 +286,63 @@ export default function Home() {
               {/* Résumé en 4 cadres - mobile uniquement, 2 lignes de 2 cadres */}
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {/* Carte 1 : Sommeil & Stress */}
-                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125">
+                <motion.div
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                >
                   <span className="text-3xl mb-2">😴</span>
                   <h4 className="font-semibold text-base mb-1 text-black">Sommeil & Stress</h4>
                   <p className="text-gray-600 text-xs">Améliore le sommeil, réduit le stress et l’anxiété.</p>
-                </div>
+                </motion.div>
                 {/* Carte 2 : Douleurs & Tensions */}
-                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125">
+                <motion.div
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                >
                   <span className="text-3xl mb-2">💆‍♂️</span>
                   <h4 className="font-semibold text-base mb-1 text-black">Douleurs & Tensions</h4>
                   <p className="text-gray-600 text-xs">Soulage les douleurs, libère les tensions corporelles.</p>
-                </div>
+                </motion.div>
                 {/* Carte 3 : Digestion */}
-                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125">
+                <motion.div
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                >
                   <span className="text-3xl mb-2">🌱</span>
                   <h4 className="font-semibold text-base mb-1 text-black">Digestion</h4>
                   <p className="text-gray-600 text-xs">Favorise une meilleure digestion et un transit régulier.</p>
-                </div>
+                </motion.div>
                 {/* Carte 4 : Énergie & Immunité */}
-                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125">
+                <motion.div
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                >
                   <span className="text-3xl mb-2">⚡️</span>
                   <h4 className="font-semibold text-base mb-1 text-black">Énergie & Immunité</h4>
                   <p className="text-gray-600 text-xs">Booste l’énergie, stimule les défenses naturelles.</p>
-                </div>
+                </motion.div>
               </div>
+              {/* Trait animé sous les 4 cadres */}
+              <motion.div
+                initial={{ width: 0, opacity: 0 }}
+                whileInView={{ width: '100%', opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="h-1 bg-gray-300 rounded-full mx-auto mb-8"
+                style={{ maxWidth: 120 }}
+              />
               
               {/* Section Tarif déplacée ici */}
               <div className="relative z-10 mb-4">
@@ -272,6 +359,15 @@ export default function Home() {
                     <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center max-w-2xl mx-auto">
                       3 séances te coûteront <span className="text-black">200€</span>, 5 séances <span className="text-black">350€</span>... Plus tu investis dans ton bien-être, plus c'est avantageux !
                     </p>
+                    {/* Trait animé sous la réponse tarif */}
+                    <motion.div
+                      initial={{ width: 0, opacity: 0 }}
+                      whileInView={{ width: '100%', opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.7 }}
+                      className="h-1 bg-gray-300 rounded-full mx-auto mt-4"
+                      style={{ maxWidth: 120 }}
+                    />
                   </div>
                 </div>
               </div>
@@ -279,11 +375,29 @@ export default function Home() {
               <div>
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">ET TU PRATIQUES OÙ ?</h3>
                 <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">Dans divers cabinets à Paris, à domicile, sur ton lieu de travail, à ton pop-up store, ou même en backstage avant ou après ton concert.</p>
+                {/* Trait animé après la réponse */}
+                <motion.div
+                  initial={{ width: 0, opacity: 0 }}
+                  whileInView={{ width: '100%', opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8"
+                  style={{ maxWidth: 120 }}
+                />
               </div>
               {/* Question pour qui déplacée en dernier */}
               <div className="text-center mt-0">
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">MAIS EN FAIT, C'EST POUR QUI ?</h3>
                 <p className="text-lg md:text-2xl text-black font-bold uppercase mb-4">TOUS LE MONDE.</p>
+                {/* Trait animé après la réponse */}
+                <motion.div
+                  initial={{ width: 0, opacity: 0 }}
+                  whileInView={{ width: '100%', opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8"
+                  style={{ maxWidth: 120 }}
+                />
                 <button
                   className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 mt-2 md:mt-4"
                 >
@@ -295,7 +409,7 @@ export default function Home() {
         </div>
 
         {/* Section Contact */}
-        <div className="relative z-10 py-20 bg-white">
+        <div id="contact" className="relative z-10 py-20 bg-white">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Prendre rendez-vous</h2>
             <form className="bg-white rounded-2xl shadow-xl p-8 space-y-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
@@ -340,10 +454,10 @@ export default function Home() {
         </div>
 
         {/* Instagram Gallery Section + Avis */}
-        <div className="relative z-10 pt-20 pb-2 min-h-[700px]" style={{ background: 'linear-gradient(to bottom, #ECE5D9 0%, #fff 100%)' }}>
+        <div className="relative z-10 pt-8 md:pt-20 pb-2 min-h-[700px] bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-5xl font-bold text-gray-900 mb-4">La Communauté</h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">La Communauté</h2>
             </div>
             {/* Instagram Feed Placeholder */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -371,15 +485,15 @@ export default function Home() {
                 href="https://www.instagram.com/reflexologie__plantaire/?igsh=MTc2b2NveWs4Y3pnYQ%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
-                className="inline-block bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl text-lg"
+                className="inline-block bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl text-lg flex items-center justify-center"
           >
-                Voir le feed Instagram
+                <Image src="/insta.png" alt="Instagram" width={36} height={36} className="object-contain h-9 w-9" />
           </a>
             </div>
             {/* Avis clients juste sous le bouton Instagram */}
             <div className="w-screen max-w-none px-0 my-12 relative left-1/2 right-1/2 -translate-x-1/2">
-              <h2 className="text-4xl font-bold text-gray-900 mb-2 text-center">Avis clients</h2>
-              <p className="text-lg text-gray-700 text-center">Ils ont testé la réflexologie plantaire&nbsp;: voici leurs ressentis</p>
+              <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-2 text-center">Ce qu'ils en pensent...</h2>
+              <p className="text-base md:text-lg text-gray-700 text-center">Ils ont testé la réflexologie plantaire&nbsp;: voici leurs ressentis</p>
               <div className="overflow-x-auto scroll-smooth snap-x snap-mandatory mt-8 pb-24">
                 <motion.div
                   className="flex gap-6"
@@ -409,7 +523,7 @@ export default function Home() {
                     { name: "Laure S.", text: "J'ai ressenti les effets dès la première séance.", note: 5 },
                     { name: "Antoine Z.", text: "Une bulle de bien-être, à refaire !", note: 5 },
                   ].map((avis, i) => (
-                    <div key={i} className="min-w-[320px] max-w-xs bg-white rounded-2xl shadow-xl p-6 flex flex-col items-start justify-between snap-center">
+                    <div key={i} className="min-w-[220px] max-w-xs bg-white rounded-2xl shadow-xl p-3 md:min-w-[320px] md:p-6 flex flex-col items-start justify-between snap-center">
                       <div className="flex items-center mb-2">
                         {Array.from({ length: avis.note }).map((_, j) => (
                           <span key={j} className="text-yellow-400 text-lg">★</span>

@@ -579,7 +579,7 @@ export default function Home() {
             <div className="text-gray-600 mb-1">06 31 83 05 44</div>
             <div className="text-gray-600 mb-4">tom.reflexologue@gmail.com</div>
             <div className="flex gap-3 mt-2">
-              <a href="#"><img src="/insta.jpeg" alt="Instagram" className="w-8 h-8 rounded" /></a>
+              <a href="#"><img src="/insta.png" alt="Instagram" className="w-7 h-7 object-contain mx-auto bg-transparent" /></a>
               <a href="#"><img src="/fb.png" alt="Facebook" className="w-8 h-8 rounded" /></a>
             </div>
           </div>

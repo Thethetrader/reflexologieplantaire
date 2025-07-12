@@ -129,8 +129,14 @@ export default function Home() {
               
               {/* Image */}
               <div className="lg:w-1/2 flex flex-col items-center justify-start" style={{ marginTop: '-3rem' }}>
-                <div className="w-80 h-80 rounded-lg overflow-hidden mx-auto shadow-xl">
-                  <Image
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="w-80 h-80 rounded-lg overflow-hidden mx-auto shadow-xl"
+          >
+            <Image
                     src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
                     alt="Tom Robert - Réflexologue"
                     width={320}
@@ -138,15 +144,15 @@ export default function Home() {
                     className="object-cover w-full h-full"
                     style={{ objectPosition: 'center 15%' }}
                   />
-                </div>
+                </motion.div>
               </div>
               
               {/* Content */}
               <div className="lg:w-1/2">
                 <h2 className="text-5xl font-bold text-gray-900 mb-8 text-center md:text-left">Tom Robert</h2>
-                <h3 className="text-2xl font-semibold text-gray-700 mb-6 text-center md:text-left">Réflexologue diplômé</h3>
+                <h3 className="text-2xl font-semibold text-gray-700 mb-6 text-center">Réflexologue diplômé</h3>
                 
-                <div className="space-y-6 text-lg text-gray-600">
+                <div className="space-y-6 text-lg text-gray-600 text-center">
                   <p>
                     Passionné par le bien-être et les médecines naturelles, je vous accompagne dans votre quête d'équilibre et de santé grâce à la réflexologie plantaire.
                   </p>
@@ -196,7 +202,7 @@ export default function Home() {
               
               {/* Question 1 */}
               <div className="text-center mb-8">
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 uppercase">
+                <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">
                   MAIS EN FAIT, C'EST QUOI LA RÉFLEXOLOGIE ?
                 </h3>
                 <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
@@ -206,44 +212,44 @@ export default function Home() {
               
               {/* Question 2 */}
               <div className="text-center">
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 uppercase">
+                <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-6 uppercase">
                   MAIS EN FAIT, TU SOIGNES QUOI ?
                 </h3>
               </div>
 
-              {/* Résumé en 4 cadres */}
-              <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              {/* Résumé en 4 cadres - mobile uniquement, 2 par ligne */}
+              <div className="mt-10 grid grid-cols-2 gap-4 md:hidden">
                 {/* Carte 1 : de la gauche */}
                 <div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl text-xs"
                 >
-                  <span className="text-4xl mb-4">😴</span>
-                  <h4 className="font-semibold text-base md:text-lg mb-2 text-black">Sommeil & Stress</h4>
-                  <p className="text-gray-600 text-xs md:text-sm">Améliore le sommeil, réduit le stress et l’anxiété.</p>
+                  <span className="text-4xl mb-2">😴</span>
+                  <h4 className="font-semibold text-base mb-1 text-black">Sommeil & Stress</h4>
+                  <p className="text-gray-600 text-xs">Améliore le sommeil, réduit le stress et l’anxiété.</p>
                 </div>
                 {/* Carte 2 : de la droite */}
                 <div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl text-xs"
                 >
-                  <span className="text-4xl mb-4">🤕</span>
-                  <h4 className="font-semibold text-base md:text-lg mb-2 text-black">Douleurs & Tensions</h4>
-                  <p className="text-gray-600 text-xs md:text-sm">Soulage maux de tête, douleurs chroniques, tensions musculaires.</p>
+                  <span className="text-4xl mb-2">🤕</span>
+                  <h4 className="font-semibold text-base mb-1 text-black">Douleurs & Tensions</h4>
+                  <p className="text-gray-600 text-xs">Soulage maux de tête, douleurs chroniques, tensions musculaires.</p>
                 </div>
                 {/* Carte 3 : de la gauche */}
                 <div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl text-xs"
                 >
-                  <span className="text-4xl mb-4">🍽️</span>
-                  <h4 className="font-semibold text-base md:text-lg mb-2 text-black">Digestion & Fatigue</h4>
-                  <p className="text-gray-600 text-xs md:text-sm">Aide la digestion, booste l’énergie, lutte contre la fatigue.</p>
+                  <span className="text-4xl mb-2">🍽️</span>
+                  <h4 className="font-semibold text-base mb-1 text-black">Digestion & Fatigue</h4>
+                  <p className="text-gray-600 text-xs">Aide la digestion, booste l’énergie, lutte contre la fatigue.</p>
                 </div>
                 {/* Carte 4 : de la droite */}
                 <div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl text-xs"
                 >
-                  <span className="text-4xl mb-4">⚖️</span>
-                  <h4 className="font-semibold text-base md:text-lg mb-2 text-black">Hormones & Bien-être</h4>
-                  <p className="text-gray-600 text-xs md:text-sm">Régule les hormones, équilibre le corps, favorise le bien-être.</p>
+                  <span className="text-4xl mb-2">⚖️</span>
+                  <h4 className="font-semibold text-base mb-1 text-black">Hormones & Bien-être</h4>
+                  <p className="text-gray-600 text-xs">Régule les hormones, équilibre le corps, favorise le bien-être.</p>
                 </div>
               </div>
               
@@ -251,29 +257,28 @@ export default function Home() {
               <div className="relative z-10 py-2">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                   <h2
-                    className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 uppercase text-center"
+                    className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase text-center"
                   >
                     ET COMBIEN ÇA NOUS COUTE ?
                   </h2>
                   <div className="mb-2">
-                    <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center max-w-2xl mx-auto mb-2">
+                    <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center max-w-2xl mx-auto">
                       C'est <span className="text-black">80€</span> la séance de 1h et bien sûr, si tu en prends plusieurs c'est dégressif. 
-                      <br /><br />
-                      3 séances te coûteront <span className="text-black">200€</span>, 
-                      5 séances <span className="text-black">350€</span>... 
-                      Plus tu investis dans ton bien-être, plus c'est avantageux !
+                    </p>
+                    <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center max-w-2xl mx-auto">
+                      3 séances te coûteront <span className="text-black">200€</span>, 5 séances <span className="text-black">350€</span>... Plus tu investis dans ton bien-être, plus c'est avantageux !
                     </p>
                   </div>
                 </div>
               </div>
               {/* Nouvelle question/réponse */}
               <div>
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 uppercase">ET TU PRATIQUES OÙ ?</h3>
+                <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">ET TU PRATIQUES OÙ ?</h3>
                 <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">Dans divers cabinets à Paris, à domicile, sur ton lieu de travail, à ton pop-up store, ou même en backstage avant ou après ton concert.</p>
               </div>
               {/* Question pour qui déplacée en dernier */}
               <div className="text-center mt-8">
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 uppercase">MAIS EN FAIT, C'EST POUR QUI ?</h3>
+                <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">MAIS EN FAIT, C'EST POUR QUI ?</h3>
                 <p className="text-lg md:text-2xl text-black font-bold uppercase mb-4">TOUS LE MONDE.</p>
                 <button
                   className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 mt-4"
@@ -339,14 +344,21 @@ export default function Home() {
             
             {/* Instagram Feed Placeholder */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {[1,2,3,4,5,6,7,8].map((num) => (
-                <div key={num} className="aspect-square bg-white rounded-lg overflow-hidden shadow-xl flex items-center justify-center">
+              {[1,2,3,4,5,6,7,8].map((num, i) => (
+                <motion.div
+                  key={num}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  className="aspect-square bg-white rounded-lg overflow-hidden shadow-xl flex items-center justify-center"
+                >
                   <img
                     src={`/${num}.jpg`}
                     alt={`Photo ${num}`}
                     className="object-cover w-full h-full transition-all duration-300 hover:scale-105"
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
             

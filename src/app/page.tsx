@@ -48,8 +48,25 @@ export default function Home() {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Ajout état pour la barre de progression
+  const [scrollProgress, setScrollProgress] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth < 768) {
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+        setScrollProgress(progress);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen" style={{ background: 'linear-gradient(to bottom, #f8f9fa 0%, #f5e9da 100%)' }}>
+      {/* Barre de progression mobile */}
+      {/* (Suppression de la div de barre de progression tout en haut) */}
       {/* Navigation */}
       <nav className="bg-white fixed w-full top-0 z-50 border-b border-gray-200 hidden md:block shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -137,6 +154,8 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
+          {/* Barre de progression mobile au-dessus de la photo */}
+          {/* (Suppression de la div de barre de progression mobile) */}
           <div className="max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-16">
               
@@ -503,10 +522,10 @@ export default function Home() {
           </a>
             </div>
             {/* Avis clients juste sous le bouton Instagram */}
-            <div className="w-screen max-w-none px-0 my-12 relative left-1/2 right-1/2 -translate-x-1/2">
+            <div className="w-screen max-w-none px-0 my-4 md:my-12 relative left-1/2 right-1/2 -translate-x-1/2">
               <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-2 text-center">Ce qu'ils en pensent...</h2>
               <p className="text-base md:text-lg text-gray-700 text-center">Ils ont testé la réflexologie plantaire&nbsp;: voici leurs ressentis</p>
-              <div className="overflow-x-auto scroll-smooth snap-x snap-mandatory mt-8 pb-24">
+              <div className="overflow-x-auto scroll-smooth snap-x snap-mandatory mt-8 pb-8 md:pb-24">
                 <motion.div
                   className="flex gap-6"
                   animate={{ x: [0, -1200] }}
@@ -551,6 +570,20 @@ export default function Home() {
           </div>
         </div>
         
+        {/* Section Contact Praticien sous les avis */}
+        <div className="block md:hidden w-full py-8 bg-white border-t border-gray-200">
+          <div className="max-w-2xl mx-auto px-4">
+            <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Contact</h2>
+            <div className="mb-2 font-bold text-lg text-black">TOM ROBERT</div>
+            <div className="text-gray-600 mb-1">25 rue bichat, 75010 Paris</div>
+            <div className="text-gray-600 mb-1">06 31 83 05 44</div>
+            <div className="text-gray-600 mb-4">tom.reflexologue@gmail.com</div>
+            <div className="flex gap-3 mt-2">
+              <a href="#"><img src="/insta.jpeg" alt="Instagram" className="w-8 h-8 rounded" /></a>
+              <a href="#"><img src="/fb.png" alt="Facebook" className="w-8 h-8 rounded" /></a>
+            </div>
+          </div>
+        </div>
       </div>
       <style jsx global>{`
         ::placeholder {

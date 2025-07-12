@@ -119,7 +119,14 @@ export default function Home() {
       {/* Contenu du site après le hero, sans fond supplémentaire */}
       <div className="w-full">
         {/* Practitioner Section */}
-        <div ref={praticienRef} className="relative z-10 py-0 md:py-20 bg-white md:mt-[100vh]">
+        <motion.div
+          ref={praticienRef}
+          className="relative z-10 py-0 md:py-20 bg-white md:mt-[100vh]"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-16">
               
@@ -130,7 +137,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
-                  className="w-full md:w-80 md:h-80 md:rounded-lg md:overflow-hidden transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125 mb-2 md:mb-8"
+                  className="relative w-full md:w-80 md:h-80 md:rounded-lg md:overflow-hidden transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125 mb-2 md:mb-8"
                 >
                   <Image
                     src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
@@ -145,7 +152,13 @@ export default function Home() {
               
               {/* Content */}
               <div className="lg:w-1/2">
-                <h2 className="text-xl md:text-5xl font-bold text-gray-900 mb-8 text-center md:text-left">Tom Robert</h2>
+                {/* Overlay TOM ROBERT sur la photo en mobile, au-dessus sur desktop */}
+                <div className="block md:hidden">
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-11/12 text-center z-20">
+                    <span className="inline-block text-black text-lg font-bold uppercase px-3 py-1">TOM ROBERT</span>
+                  </div>
+                </div>
+                <h2 className="hidden md:block text-2xl font-bold text-gray-900 uppercase mb-4 text-left">TOM ROBERT</h2>
                 
                 <div className="space-y-6 text-sm md:text-lg text-gray-600 text-center md:text-left">
                   <p>
@@ -192,7 +205,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* FAQ Section */}
         <div className="relative z-10 py-20" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
@@ -367,11 +380,12 @@ export default function Home() {
             <div className="w-screen max-w-none px-0 my-12 relative left-1/2 right-1/2 -translate-x-1/2">
               <h2 className="text-4xl font-bold text-gray-900 mb-2 text-center">Avis clients</h2>
               <p className="text-lg text-gray-700 text-center">Ils ont testé la réflexologie plantaire&nbsp;: voici leurs ressentis</p>
-              <div className="overflow-x-hidden mt-8 pb-24">
+              <div className="overflow-x-auto scroll-smooth snap-x snap-mandatory mt-8 pb-24">
                 <motion.div
                   className="flex gap-6"
                   animate={{ x: [0, -1200] }}
                   transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+                  style={{ touchAction: 'pan-x' }}
                 >
                   {[
                     { name: "Sophie L.", text: "Un vrai moment de détente, je me sens tellement mieux après chaque séance !", note: 5 },
@@ -395,7 +409,7 @@ export default function Home() {
                     { name: "Laure S.", text: "J'ai ressenti les effets dès la première séance.", note: 5 },
                     { name: "Antoine Z.", text: "Une bulle de bien-être, à refaire !", note: 5 },
                   ].map((avis, i) => (
-                    <div key={i} className="min-w-[320px] max-w-xs bg-white rounded-2xl shadow-xl p-6 flex flex-col items-start justify-between">
+                    <div key={i} className="min-w-[320px] max-w-xs bg-white rounded-2xl shadow-xl p-6 flex flex-col items-start justify-between snap-center">
                       <div className="flex items-center mb-2">
                         {Array.from({ length: avis.note }).map((_, j) => (
                           <span key={j} className="text-yellow-400 text-lg">★</span>

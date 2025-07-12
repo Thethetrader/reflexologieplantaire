@@ -213,31 +213,31 @@ export default function Home() {
                 </h3>
               </div>
 
-              {/* Résumé en 4 cadres - desktop uniquement */}
-              <div className="mt-10 hidden md:grid md:grid-cols-4 gap-6 md:gap-8">
+              {/* Résumé en 4 cadres - mobile uniquement */}
+              <div className="grid grid-cols-2 gap-4 md:hidden mb-8">
                 {/* Carte 1 : Sommeil & Stress */}
-                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <span className="text-4xl mb-4">😴</span>
-                  <h4 className="font-semibold text-lg mb-2 text-black">Sommeil & Stress</h4>
-                  <p className="text-gray-600 text-sm">Améliore le sommeil, réduit le stress et l’anxiété.</p>
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center">
+                  <span className="text-3xl mb-2">😴</span>
+                  <h4 className="font-semibold text-base mb-1 text-black">Sommeil & Stress</h4>
+                  <p className="text-gray-600 text-xs">Améliore le sommeil, réduit le stress et l’anxiété.</p>
                 </div>
                 {/* Carte 2 : Douleurs & Tensions */}
-                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <span className="text-4xl mb-4">🤕</span>
-                  <h4 className="font-semibold text-lg mb-2 text-black">Douleurs & Tensions</h4>
-                  <p className="text-gray-600 text-sm">Soulage maux de tête, douleurs chroniques, tensions musculaires.</p>
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center">
+                  <span className="text-3xl mb-2">💆‍♂️</span>
+                  <h4 className="font-semibold text-base mb-1 text-black">Douleurs & Tensions</h4>
+                  <p className="text-gray-600 text-xs">Soulage les douleurs, libère les tensions corporelles.</p>
                 </div>
-                {/* Carte 3 : Digestion & Fatigue */}
-                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <span className="text-4xl mb-4">🍽️</span>
-                  <h4 className="font-semibold text-lg mb-2 text-black">Digestion & Fatigue</h4>
-                  <p className="text-gray-600 text-sm">Aide la digestion, booste l’énergie, lutte contre la fatigue.</p>
+                {/* Carte 3 : Digestion */}
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center">
+                  <span className="text-3xl mb-2">🌱</span>
+                  <h4 className="font-semibold text-base mb-1 text-black">Digestion</h4>
+                  <p className="text-gray-600 text-xs">Favorise une meilleure digestion et un transit régulier.</p>
                 </div>
-                {/* Carte 4 : Hormones & Bien-être */}
-                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-                  <span className="text-4xl mb-4">⚖️</span>
-                  <h4 className="font-semibold text-lg mb-2 text-black">Hormones & Bien-être</h4>
-                  <p className="text-gray-600 text-sm">Régule les hormones, équilibre le corps, favorise le bien-être.</p>
+                {/* Carte 4 : Énergie & Immunité */}
+                <div className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center">
+                  <span className="text-3xl mb-2">⚡️</span>
+                  <h4 className="font-semibold text-base mb-1 text-black">Énergie & Immunité</h4>
+                  <p className="text-gray-600 text-xs">Booste l’énergie, stimule les défenses naturelles.</p>
                 </div>
               </div>
               

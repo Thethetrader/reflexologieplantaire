@@ -138,7 +138,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center overflow-hidden z-0 md:fixed md:inset-0 md:min-h-screen md:mt-0 bg-transparent py-[30rem] md:py-0">
+      <div className="fixed inset-0 z-0 min-h-screen flex items-center justify-center overflow-hidden bg-transparent py-0 md:relative md:inset-auto md:z-auto md:min-h-screen md:mt-0 md:py-[30rem]">
         {/* Background Image */}
         <div className="absolute inset-0 bg-white">
         <Image
@@ -155,7 +155,7 @@ export default function Home() {
 
         {/* Content */}
         <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-0 md:mt-[56rem]">
-          <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-8 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
+          <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-48 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
           <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-2 md:mb-8">Réserve ta séance</button>
         </div>
       </div>
@@ -163,12 +163,12 @@ export default function Home() {
       {/* Bandeau beige sous le Hero */}
       <div style={{ width: '100%', height: '140px', background: '#ECE5D9' }} />
 
-      {/* Contenu du site après le hero, sans fond supplémentaire */}
-      <div className="w-full">
+      {/* Contenu du site après le hero */}
+      <div className="w-full" style={{ marginTop: '100vh' }}>
         {/* Practitioner Section */}
         <motion.div
           ref={praticienRef}
-          className="relative z-10 py-0 md:py-20 bg-white md:mt-[100vh] mt-[-12rem]"
+          className="relative z-10 py-0 md:py-20 bg-white md:mt-[100vh] mt-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -181,31 +181,31 @@ export default function Home() {
               
               {/* Image */}
               <div className="lg:w-1/2 flex flex-col items-start justify-start w-full md:w-auto" style={{ marginTop: '-3rem' }}>
-                {/* Titre TOM ROBERT au-dessus de la photo (mobile) */}
-                {typeof window !== 'undefined' && window.innerWidth < 768 && (
-                  <div className="w-full mb-2">
-                    <h2 className="text-xl font-bold text-center text-black">Tom Robert</h2>
-                  </div>
-                )}
-                {/* Mobile : diplômes alternés à la place de la photo de Tom */}
-                <div className="relative w-[320px] h-[320px] max-w-xs md:w-80 md:h-80 md:rounded-lg md:overflow-hidden mb-1 md:mb-8 ml-0 mt-6 mx-auto flex items-center justify-center">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="relative w-full h-full"
-                  >
-                    <Image
-                      src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
-                      alt="Tom Robert - Réflexologue"
-                      width={320}
-                      height={320}
-                      className="object-cover w-full h-full md:rounded-lg"
-                      style={{ objectPosition: 'center 15%' }}
-                    />
-                  </motion.div>
-                </div>
+                 {/* Mobile : diplômes alternés à la place de la photo de Tom */}
+                 <div className="relative w-[320px] h-[320px] max-w-xs md:w-80 md:h-80 md:rounded-lg md:overflow-hidden mb-1 md:mb-8 ml-0 mt-12 mx-auto flex items-center justify-center">
+                   <motion.div
+                     initial={{ opacity: 0, y: 30 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.6 }}
+                     viewport={{ once: true }}
+                     className="relative w-full h-full"
+                   >
+                     <Image
+                       src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
+                       alt="Tom Robert - Réflexologue"
+                       width={320}
+                       height={320}
+                       className="object-cover w-full h-full md:rounded-lg"
+                       style={{ objectPosition: 'center 15%' }}
+                     />
+                   </motion.div>
+                 </div>
+                 {/* Titre TOM ROBERT sous la photo (mobile) */}
+                 {typeof window !== 'undefined' && window.innerWidth < 768 && (
+                   <div className="w-full mt-2 -mb-12">
+                     <h2 className="text-xl font-bold text-center text-black">Tom Robert</h2>
+                   </div>
+                 )}
               </div>
               
               {/* Content */}
@@ -450,7 +450,7 @@ export default function Home() {
         </div>
 
         {/* Vidéo mobile avant la boîte de contact */}
-        <div className="block md:hidden w-full">
+        <div className="block md:hidden w-full relative z-50">
           <video 
             src="/video.mp4" 
             autoPlay 

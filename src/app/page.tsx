@@ -462,7 +462,7 @@ export default function Home() {
           />
         </div>
         {/* Section Contact */}
-        <div id="contact" className="relative z-10 py-20 bg-white">
+        <div id="contact" className="relative z-[100] py-20 bg-white md:z-10 md:relative">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Prendre rendez-vous</h2>
             <form className="bg-white rounded-2xl shadow-xl p-8 space-y-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
@@ -596,15 +596,15 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Section Contact Praticien sous les avis */}
-        <div className="block md:hidden w-full py-8 bg-white border-t border-gray-200">
-          <div className="max-w-2xl mx-auto px-4">
+        {/* Petite section beige sous les avis */}
+        <div className="w-full pt-2 pb-8 relative z-[100]" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
+          <div className="max-w-2xl mx-auto px-4 text-center">
             <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Contact</h2>
             <div className="mb-2 font-bold text-lg text-black">TOM ROBERT</div>
             <div className="text-gray-600 mb-1">25 rue bichat, 75010 Paris</div>
             <div className="text-gray-600 mb-1">06 31 83 05 44</div>
             <div className="text-gray-600 mb-4">tom.reflexologue@gmail.com</div>
-            <div className="flex gap-3 mt-2">
+            <div className="flex gap-3 mt-2 justify-center items-center">
               <a href="#" className="flex items-center justify-center w-10 h-10 bg-[#232b35] rounded-full">
                 {/* Icône Instagram SVG */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="white" strokeWidth="1.5">
@@ -613,6 +613,15 @@ export default function Home() {
                   <circle cx="17" cy="7" r="1.2" fill="white"/>
                 </svg>
               </a>
+              <button
+                className="bg-black text-white rounded-full px-4 py-1 text-sm font-bold shadow-md mx-2"
+                onClick={() => {
+                  const contact = document.getElementById('contact');
+                  if (contact) contact.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                RDV
+              </button>
               <a href="#" className="flex items-center justify-center w-10 h-10 bg-[#232b35] rounded-full">
                 {/* Icône Facebook SVG */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-6 h-6">

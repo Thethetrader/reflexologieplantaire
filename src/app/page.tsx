@@ -81,7 +81,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen w-full bg-[#ECE5D9] md:bg-[#ECE5D9]" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 20%)' }}>
+    <div className="min-h-screen w-full" style={{ background: 'linear-gradient(to right, #ECE5D9 0%, #fff 100%)' }}>
       {/* Barre de progression mobile */}
       {/* (Suppression de la div de barre de progression tout en haut) */}
       {/* Navigation */}
@@ -138,7 +138,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center overflow-hidden z-0 md:fixed md:inset-0 md:min-h-screen md:mt-0 bg-gray-400 md:bg-white py-[30rem] md:py-0">
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden z-0 md:fixed md:inset-0 md:min-h-screen md:mt-0 bg-transparent py-[30rem] md:py-0">
         {/* Background Image */}
         <div className="absolute inset-0 bg-white">
         <Image
@@ -159,6 +159,9 @@ export default function Home() {
           <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-2 md:mb-8">Réserve ta séance</button>
         </div>
       </div>
+
+      {/* Bandeau beige sous le Hero */}
+      <div style={{ width: '100%', height: '140px', background: '#ECE5D9' }} />
 
       {/* Contenu du site après le hero, sans fond supplémentaire */}
       <div className="w-full">
@@ -181,52 +184,34 @@ export default function Home() {
                 {/* Titre TOM ROBERT au-dessus de la photo (mobile) */}
                 {typeof window !== 'undefined' && window.innerWidth < 768 && (
                   <div className="w-full mb-2">
-                    <h2 className="text-xl font-bold uppercase text-center text-black">TOM ROBERT</h2>
+                    <h2 className="text-xl font-bold text-center text-black">Tom Robert</h2>
                   </div>
                 )}
                 {/* Mobile : diplômes alternés à la place de la photo de Tom */}
                 <div className="relative w-[320px] h-[320px] max-w-xs md:w-80 md:h-80 md:rounded-lg md:overflow-hidden mb-1 md:mb-8 ml-0 mt-6 mx-auto flex items-center justify-center">
-                  <AnimatePresence mode="wait">
-                    {typeof window !== 'undefined' && window.innerWidth < 768 ? (
-                      <motion.img
-                        key={diplomeIndex}
-                        src={diplomeImages[diplomeIndex]}
-                        alt="Diplôme de réflexologie plantaire"
-                        width={320}
-                        height={320}
-                        className={diplomeIndex === 0 ? "object-cover w-full h-full rounded-lg" : "object-contain w-full h-[320px] rounded-lg bg-white mx-auto my-auto"}
-                        style={{ objectPosition: 'center 15%' }}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 1.5 }}
-                      />
-                    ) : (
-                      <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                        className="relative w-full h-full"
-                      >
-                        <Image
-                          src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
-                          alt="Tom Robert - Réflexologue"
-                          width={320}
-                          height={320}
-                          className="object-cover w-full h-full md:rounded-lg"
-                          style={{ objectPosition: 'center 15%' }}
-                        />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="relative w-full h-full"
+                  >
+                    <Image
+                      src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
+                      alt="Tom Robert - Réflexologue"
+                      width={320}
+                      height={320}
+                      className="object-cover w-full h-full md:rounded-lg"
+                      style={{ objectPosition: 'center 15%' }}
+                    />
+                  </motion.div>
                 </div>
               </div>
               
               {/* Content */}
               <div className="lg:w-1/2">
                 {/* TOM ROBERT centré au-dessus de la photo sur mobile, au-dessus sur desktop */}
-                <h2 className="hidden md:block text-2xl font-bold text-gray-900 uppercase mb-4 text-left">TOM ROBERT</h2>
+                <h2 className="hidden md:block text-2xl font-bold text-gray-900 mb-4 text-left">Tom Robert</h2>
                 
                 <div className="px-4">
                   {/* Barre noire décorative au-dessus du texte, mobile uniquement, animée */}
@@ -241,12 +226,6 @@ export default function Home() {
                   <div className="text-base text-gray-600 mb-6 text-center">
                     <p className="text-gray-600">
                       La réflexologie est un moyen agréable, précis et efficace de rétablir l'équilibre naturellement.
-                    </p>
-                    <p className="text-gray-600">
-                      Je suis spécialisé en réflexologie plantaire.
-                    </p>
-                    <p className="text-gray-600">
-                      Toutefois je connais bien les désagréments collatéraux que les positions de bureau peuvent engendrer. Je les ai éprouvés de nombreuses années.
                     </p>
                     <p className="text-gray-600">
                       Sensible aux médecines naturelles depuis toujours, et diplômé de la FLMNE, je vous propose qu'ensemble nous évacuons les blocages et renforcions votre niveau d'énergie, pour que vous rayonnez dans votre vie globale et d'entreprise.
@@ -318,8 +297,9 @@ export default function Home() {
                   MAIS EN FAIT, C'EST QUOI LA RÉFLEXOLOGIE PLANTAIRE ?
                 </h3>
                 <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
-                  Pour plus de détails sur la réflexologie, voici ma définition personnelle :<br/>
-                  La réflexologie est une approche <span className="font-bold text-black">thérapeutique et préventive</span> dont les fondements tissent leurs racines dans la médecine traditionnelle chinoise, et qui <span className="font-bold text-black">actualisée à nos vies "modernes"</span> constitue une solution n-aturelle et non intrusive vers l'équilibre du corps et de son âme. Schématiquement, elle s'articule autour de la <span className="font-bold text-black">stimulation de zones réflexes</span> (des pieds, des mains, du visage, de la tête, etc.), qui par de simples mais précises pressions permettent d'agir sur la <span className="font-bold text-black">circulation de l'énergie de l'ensemble du corps.</span>
+                  La réflexologie est une approche <span className="font-bold text-black">thérapeutique et préventive</span> dont les fondements tissent leurs racines dans la médecine traditionnelle chinoise, et qui <span className="font-bold text-black">actualisée à nos vies "modernes"</span>.<br/>
+                  <span className="font-bold text-black">Stimulation de zones réflexes</span>.<br/>
+                  <span className="font-bold text-black">Circulation de l'énergie de l'ensemble du corps.</span>
                 </p>
                 {/* Trait animé après la réponse, animé partout */}
                 <motion.div
@@ -336,7 +316,7 @@ export default function Home() {
               {/* Question 2 */}
               <div className="text-center">
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">
-                  MAIS EN FAIT, TU SOIGNES QUOI ?
+                  MAIS EN FAIT, ÇA SOIGNE QUOI ?
                 </h3>
               </div>
 
@@ -415,7 +395,10 @@ export default function Home() {
                       C'est <span className="text-black">80€</span> la séance de 1h et bien sûr, si tu en prends plusieurs c'est dégressif. 
                     </p>
                     <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center max-w-2xl mx-auto">
-                      3 séances te coûteront <span className="text-black">200€</span>, 5 séances <span className="text-black">350€</span>... Plus tu investis dans ton bien-être, plus c'est avantageux !
+                      3 séances te coûteront <span className="text-black">200€</span>, 5 séances <span className="text-black">350€</span>.
+                    </p>
+                    <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center max-w-2xl mx-auto mt-2">
+                      Si tu as une mutuelle qui prend en charge la médecine douce, je te fais une feuille de soin.
                     </p>
                     {/* Trait animé sous la réponse tarif */}
                     <motion.div

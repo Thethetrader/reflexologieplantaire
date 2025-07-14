@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   // plus d'effet FAQ
@@ -63,8 +64,24 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Ajout pour diplômes alternés mobile
+  const diplomeImages = [
+    "/Brad_Pitt_2019_by_Glenn_Francis.jpg", // photo Tom Robert
+    "/diplome-reflexologie.jpeg",
+    "/certificat-reflexologie.jpeg"
+  ];
+  const [diplomeIndex, setDiplomeIndex] = useState(0);
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      const interval = setInterval(() => {
+        setDiplomeIndex((prev) => (prev + 1) % diplomeImages.length);
+      }, 4000); // 4 secondes
+      return () => clearInterval(interval);
+    }
+  }, []);
+
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(to bottom, #f8f9fa 0%, #f5e9da 100%)' }}>
+    <div className="min-h-screen w-full bg-[#ECE5D9] md:bg-[#ECE5D9]" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 20%)' }}>
       {/* Barre de progression mobile */}
       {/* (Suppression de la div de barre de progression tout en haut) */}
       {/* Navigation */}
@@ -137,9 +154,9 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-80 md:mt-[56rem]">
-          <h1 className="text-4xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center">REFLEXOLOGIE<br />PLANTAIRE</h1>
-          <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105">Réserve ta séance</button>
+        <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-0 md:mt-[56rem]">
+          <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-8 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
+          <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-2 md:mb-8">Réserve ta séance</button>
         </div>
       </div>
 
@@ -148,7 +165,7 @@ export default function Home() {
         {/* Practitioner Section */}
         <motion.div
           ref={praticienRef}
-          className="relative z-10 py-0 md:py-20 bg-white md:mt-[100vh]"
+          className="relative z-10 py-0 md:py-20 bg-white md:mt-[100vh] mt-[-12rem]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -161,45 +178,89 @@ export default function Home() {
               
               {/* Image */}
               <div className="lg:w-1/2 flex flex-col items-start justify-start w-full md:w-auto" style={{ marginTop: '-3rem' }}>
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="relative w-2/3 max-w-xs md:w-80 md:h-80 md:rounded-lg md:overflow-hidden transition-all duration-300 md:hover:scale-105 md:hover:shadow-2xl active:scale-125 mb-2 md:mb-8 ml-0"
-                >
-                  <Image
-                    src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
-                    alt="Tom Robert - Réflexologue"
-                    width={320}
-                    height={320}
-                    className="object-cover w-full h-full md:rounded-lg"
-                    style={{ objectPosition: 'center 15%' }}
-                  />
-                </motion.div>
+                {/* Titre TOM ROBERT au-dessus de la photo (mobile) */}
+                {typeof window !== 'undefined' && window.innerWidth < 768 && (
+                  <div className="w-full mb-2">
+                    <h2 className="text-xl font-bold uppercase text-center text-black">TOM ROBERT</h2>
+                  </div>
+                )}
+                {/* Mobile : diplômes alternés à la place de la photo de Tom */}
+                <div className="relative w-[320px] h-[320px] max-w-xs md:w-80 md:h-80 md:rounded-lg md:overflow-hidden mb-1 md:mb-8 ml-0 mt-6 mx-auto flex items-center justify-center">
+                  <AnimatePresence mode="wait">
+                    {typeof window !== 'undefined' && window.innerWidth < 768 ? (
+                      <motion.img
+                        key={diplomeIndex}
+                        src={diplomeImages[diplomeIndex]}
+                        alt="Diplôme de réflexologie plantaire"
+                        width={320}
+                        height={320}
+                        className={diplomeIndex === 0 ? "object-cover w-full h-full rounded-lg" : "object-contain w-full h-[320px] rounded-lg bg-white mx-auto my-auto"}
+                        style={{ objectPosition: 'center 15%' }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.5 }}
+                      />
+                    ) : (
+                      <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="relative w-full h-full"
+                      >
+                        <Image
+                          src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
+                          alt="Tom Robert - Réflexologue"
+                          width={320}
+                          height={320}
+                          className="object-cover w-full h-full md:rounded-lg"
+                          style={{ objectPosition: 'center 15%' }}
+                        />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
               
               {/* Content */}
               <div className="lg:w-1/2">
                 {/* TOM ROBERT centré au-dessus de la photo sur mobile, au-dessus sur desktop */}
-                <div className="block md:hidden w-full mb-2">
-                  <h2 className="text-lg font-bold text-black uppercase text-center w-full">TOM ROBERT</h2>
-                </div>
                 <h2 className="hidden md:block text-2xl font-bold text-gray-900 uppercase mb-4 text-left">TOM ROBERT</h2>
                 
-                <div className="space-y-0 md:space-y-6 text-sm md:text-lg text-gray-600 text-center md:text-left">
-                  <p>
-                    La réflexologie est un moyen agréable, précis et efficace de rétablir l'équilibre naturellement.
-                  </p>
-                  <p>
-                    Je suis spécialisé en réflexologie plantaire.
-                  </p>
-                  <p>
-                    Toutefois je connais bien les désagréments collatéraux que les positions de bureau peuvent engendrer. Je les ai éprouvés de nombreuses années.
-                  </p>
-                  <p>
-                    Sensible aux médecines naturelles depuis toujours, et diplômé de la FLMNE, je vous propose qu'ensemble nous évacuons les blocages et renforcions votre niveau d'énergie, pour que vous rayonnez dans votre vie globale et d'entreprise.
-                  </p>
+                <div className="px-4">
+                  {/* Barre noire décorative au-dessus du texte, mobile uniquement, animée */}
+                  <motion.div
+                    className="h-1 w-24 bg-black rounded-full mx-auto mb-4"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '6rem' }}
+                    animate={{ width: 0 }}
+                    viewport={{ once: false, amount: 0.7 }}
+                    transition={{ duration: 1.2, ease: 'easeOut' }}
+                  />
+                  <div className="text-base text-gray-600 mb-6 text-center">
+                    <p className="text-gray-600">
+                      La réflexologie est un moyen agréable, précis et efficace de rétablir l'équilibre naturellement.
+                    </p>
+                    <p className="text-gray-600">
+                      Je suis spécialisé en réflexologie plantaire.
+                    </p>
+                    <p className="text-gray-600">
+                      Toutefois je connais bien les désagréments collatéraux que les positions de bureau peuvent engendrer. Je les ai éprouvés de nombreuses années.
+                    </p>
+                    <p className="text-gray-600">
+                      Sensible aux médecines naturelles depuis toujours, et diplômé de la FLMNE, je vous propose qu'ensemble nous évacuons les blocages et renforcions votre niveau d'énergie, pour que vous rayonnez dans votre vie globale et d'entreprise.
+                    </p>
+                  </div>
+                   {/* Barre noire décorative sous le texte, mobile uniquement, animée */}
+                   <motion.div
+                     className="h-1 w-24 bg-black rounded-full mx-auto mt-4"
+                     initial={{ width: 0 }}
+                     whileInView={{ width: '6rem' }}
+                     animate={{ width: 0 }}
+                     viewport={{ once: false, amount: 0.7 }}
+                     transition={{ duration: 1.2, ease: 'easeOut' }}
+                   />
                 </div>
                 
               </div>
@@ -207,33 +268,9 @@ export default function Home() {
             </div>
           </div>
           {/* Diplômes : carrousel horizontal sur mobile, côte à côte sur desktop */}
-          <div className="mt-12 w-full">
-            {/* Mobile : carrousel horizontal infini */}
-            <div className="block md:hidden overflow-x-auto scroll-smooth snap-x snap-mandatory">
-              <motion.div
-                className="flex gap-6"
-                animate={{ x: [0, -340] }}
-                transition={{ repeat: Infinity, duration: typeof window !== 'undefined' && window.innerWidth < 768 ? 20 : 40, ease: "linear" }}
-                style={{ touchAction: 'pan-x' }}
-              >
-                {["/diplome-reflexologie.jpeg", "/certificat-reflexologie.jpeg", "/diplome-reflexologie.jpeg", "/certificat-reflexologie.jpeg"].map((src, i) => (
-                  <div key={i} className="min-w-[320px] max-w-xs flex-shrink-0 snap-center">
-                    <div className="relative transition-all duration-300 scale-75 md:scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125">
-                      <Image
-                        src={src}
-                        alt="Diplôme de réflexologie plantaire"
-                        width={800}
-                        height={560}
-                        className="rounded-lg shadow-md w-full"
-                      />
-                      <div className="absolute inset-0 rounded-lg" style={{ background: 'rgba(236, 229, 217, 0.35)' }} />
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
+          <div className="mt-0 md:mt-12 mb-0 md:mb-4 w-full">
             {/* Desktop : côte à côte comme avant */}
-            <div className="hidden md:flex flex-row items-center justify-center gap-12 mb-4">
+            <div className="hidden md:flex flex-row items-center justify-center gap-12 md:mb-4">
               <motion.div
                 className="relative transition-all duration-300 scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125"
                 initial={{ opacity: 0 }}
@@ -271,7 +308,7 @@ export default function Home() {
         </motion.div>
 
         {/* FAQ Section */}
-        <div className="relative z-10 py-20" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
+        <div className="relative z-10 pt-4 md:pt-20 pb-20" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-8 text-center">
               
@@ -284,14 +321,15 @@ export default function Home() {
                   Pour plus de détails sur la réflexologie, voici ma définition personnelle :<br/>
                   La réflexologie est une approche <span className="font-bold text-black">thérapeutique et préventive</span> dont les fondements tissent leurs racines dans la médecine traditionnelle chinoise, et qui <span className="font-bold text-black">actualisée à nos vies "modernes"</span> constitue une solution n-aturelle et non intrusive vers l'équilibre du corps et de son âme. Schématiquement, elle s'articule autour de la <span className="font-bold text-black">stimulation de zones réflexes</span> (des pieds, des mains, du visage, de la tête, etc.), qui par de simples mais précises pressions permettent d'agir sur la <span className="font-bold text-black">circulation de l'énergie de l'ensemble du corps.</span>
                 </p>
-                {/* Trait animé après la réponse */}
+                {/* Trait animé après la réponse, animé partout */}
                 <motion.div
                   initial={{ width: 0, opacity: 0 }}
                   whileInView={{ width: '100%', opacity: 1 }}
-                  viewport={{ once: true }}
+                  animate={{ width: 0, opacity: 0 }}
+                  viewport={{ once: false, amount: 0.7 }}
                   transition={{ duration: 0.7 }}
-                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8"
-                  style={{ maxWidth: 120 }}
+                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8 mt-8"
+                  style={{ maxWidth: 220 }}
                 />
               </div>
               
@@ -353,14 +391,15 @@ export default function Home() {
                   <p className="text-gray-600 text-xs">Booste l’énergie, stimule les défenses naturelles.</p>
                 </motion.div>
               </div>
-              {/* Trait animé sous les 4 cadres */}
+              {/* Trait animé sous les 4 cadres, animé partout */}
               <motion.div
                 initial={{ width: 0, opacity: 0 }}
                 whileInView={{ width: '100%', opacity: 1 }}
-                viewport={{ once: true }}
+                animate={{ width: 0, opacity: 0 }}
+                viewport={{ once: false, amount: 0.7 }}
                 transition={{ duration: 0.7 }}
                 className="h-1 bg-gray-300 rounded-full mx-auto mb-8"
-                style={{ maxWidth: 120 }}
+                style={{ maxWidth: 220 }}
               />
               
               {/* Section Tarif déplacée ici */}
@@ -400,8 +439,8 @@ export default function Home() {
                   whileInView={{ width: '100%', opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7 }}
-                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8"
-                  style={{ maxWidth: 120 }}
+                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8 md:hidden"
+                  style={{ maxWidth: 220 }}
                 />
               </div>
               {/* Question pour qui déplacée en dernier */}
@@ -414,8 +453,8 @@ export default function Home() {
                   whileInView={{ width: '100%', opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7 }}
-                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8"
-                  style={{ maxWidth: 120 }}
+                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8 md:hidden"
+                  style={{ maxWidth: 220 }}
                 />
                 <button
                   className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 mt-2 md:mt-4"

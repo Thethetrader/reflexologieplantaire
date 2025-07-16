@@ -80,13 +80,6 @@ export default function Home() {
     }
   }, []);
 
-  useEffect(() => {
-    // Force scroll en haut à l’ouverture sur mobile
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      window.scrollTo(0, 0);
-    }
-  }, []);
-
   return (
     <div className="min-h-screen w-full" style={{ background: 'linear-gradient(to right, #ECE5D9 0%, #fff 100%)' }}>
       {/* Barre de progression mobile */}
@@ -96,7 +89,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Desktop: texte */}
-            <a href="#" className="text-2xl font-bold text-gray-900 hover:text-purple-600 transition-colors duration-200">Reflexologie plantaire</a>
+            <span className="text-2xl font-bold text-gray-900">Reflexologie plantaire</span>
             {/* Liens de navigation desktop */}
             <div className="flex gap-8">
               <a href="#tom-robert" className="text-xl font-serif font-bold text-gray-900 hover:text-purple-600">Tom Robert</a>
@@ -170,7 +163,7 @@ export default function Home() {
         {/* Content */}
         <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-32 md:mt-[56rem]">
           <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-8 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
-          <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-16 md:mb-20">Réserve ta séance</button>
+          <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-2 md:mb-8">Réserve ta séance</button>
         </div>
       </div>
 
@@ -183,7 +176,7 @@ export default function Home() {
         <motion.div
           id="tom-robert"
           ref={praticienRef}
-          className="relative pt-0 pb-0 md:py-20 md:mt-[100vh] mt-[540px]"
+          className="relative pt-0 pb-0 md:py-20 md:mt-[100vh] mt-[560px]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -202,7 +195,7 @@ export default function Home() {
               <div className="w-full flex flex-col items-center justify-start md:w-full md:max-w-none" style={{ marginTop: '-3rem' }}>
                 {/* Titre TOM ROBERT au-dessus de la photo (mobile et desktop) */}
                 {/* Mobile : diplômes alternés à la place de la photo de Tom */}
-                <div className="relative w-[320px] h-[320px] max-w-xs md:w-full md:h-[1200px] md:rounded-lg md:overflow-hidden mb-0 md:mb-8 ml-0 mt-12 md:mt-4 mx-auto flex items-center justify-center md:max-w-none">
+                <div className="relative w-[320px] h-[320px] max-w-xs md:w-full md:h-[1200px] md:rounded-lg md:overflow-hidden mb-0 md:mb-8 ml-0 mt-12 mx-auto flex items-center justify-center md:max-w-none">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -485,7 +478,7 @@ export default function Home() {
             muted 
             playsInline 
             loop
-            className="w-full h-auto rounded-xl shadow-lg object-cover z-50 relative"
+            className="w-full h-auto rounded-xl shadow-lg object-cover"
             style={{ maxHeight: '600px' }}
           />
         </div>
@@ -636,7 +629,7 @@ export default function Home() {
         </div>
         
         {/* Section Contact Praticien sous les avis */}
-        <div className="block md:hidden w-full py-8 border-t border-gray-200 z-50 relative" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
+        <div className="block md:hidden w-full py-8 border-t border-gray-200" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
           <div className="max-w-2xl mx-auto px-4">
             <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Contact</h2>
             <div className="mb-2 font-bold text-lg text-black">TOM ROBERT</div>

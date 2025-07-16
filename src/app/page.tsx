@@ -448,7 +448,7 @@ export default function Home() {
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">MAIS EN FAIT, C'EST POUR QUI ?</h3>
                 <p className="text-lg md:text-2xl text-black font-bold uppercase mb-4">TOUS LE MONDE.</p>
                 {/* Vidéo autoplay visible seulement sur ordi */}
-                <div className="hidden md:block w-full max-w-3xl mx-auto my-8">
+                <div className="hidden md:block w-full max-w-3xl mx-auto my-8 relative z-20">
                   <video src="/video.mp4" autoPlay muted loop playsInline className="w-full h-auto rounded-xl shadow-lg" />
                 </div>
                 {/* Trait animé après la réponse */}
@@ -471,7 +471,7 @@ export default function Home() {
         </div>
 
         {/* Vidéo mobile avant la boîte de contact */}
-        <div className="block md:hidden w-full">
+        <div className="block md:hidden w-full relative z-20">
           <video 
             src="/video.mp4" 
             autoPlay 
@@ -629,7 +629,7 @@ export default function Home() {
         </div>
         
         {/* Section Contact Praticien sous les avis */}
-        <div className="block md:hidden w-full py-8 border-t border-gray-200" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
+        <div className="block md:hidden w-full py-8 border-t border-gray-200 relative z-20" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
           <div className="max-w-2xl mx-auto px-4">
             <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Contact</h2>
             <div className="mb-2 font-bold text-lg text-black">TOM ROBERT</div>

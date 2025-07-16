@@ -92,12 +92,10 @@ export default function Home() {
             <span className="text-2xl font-bold text-gray-900">Reflexologie plantaire</span>
             {/* Liens de navigation desktop */}
             <div className="flex gap-8">
-              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Réflexologie plantaire</a>
-              <a href="#tom-robert" className="text-gray-900 hover:text-purple-600 font-medium">Tom Robert</a>
-              <a href="#tarif" className="text-gray-900 hover:text-purple-600 font-medium">Tarif</a>
-              <a href="#contact" className="text-gray-900 hover:text-purple-600 font-medium">Contact</a>
-              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Prise de rendez-vous</a>
-              <a href="#communaute" className="text-gray-900 hover:text-purple-600 font-medium">La communauté</a>
+              <a href="#tom-robert" className="text-xl font-serif font-bold text-gray-900 hover:text-purple-600">Tom Robert</a>
+              <a href="#tarif" className="text-xl font-serif font-bold text-gray-900 hover:text-purple-600">Tarif</a>
+              <a href="#contact" className="text-xl font-serif font-bold text-gray-900 hover:text-purple-600">Contact</a>
+              <a href="#communaute" className="text-xl font-serif font-bold text-gray-900 hover:text-purple-600">La communauté</a>
             </div>
           </div>
         </div>
@@ -138,17 +136,16 @@ export default function Home() {
         {/* Menu mobile déroulant */}
         {menuOpen && (
           <div className="fixed top-14 left-0 w-full bg-white shadow-lg z-[200] flex flex-col items-center py-6 space-y-4 md:hidden">
-            <a href="#" className="text-gray-900 text-lg font-medium" onClick={() => setMenuOpen(false)}>Réflexologie plantaire</a>
-            <a href="#tom-robert" className="text-gray-900 text-lg font-medium" onClick={() => setMenuOpen(false)}>Tom Robert</a>
-            <a href="#tarif" className="text-gray-900 text-lg font-medium" onClick={() => setMenuOpen(false)}>Tarif</a>
-            <a href="#contact" className="text-gray-900 text-lg font-medium" onClick={() => setMenuOpen(false)}>Contact</a>
-            <a href="#communaute" className="text-gray-900 text-lg font-medium" onClick={() => setMenuOpen(false)}>La communauté</a>
+            <a href="#tom-robert" className="text-xl font-serif font-bold text-gray-900" onClick={() => setMenuOpen(false)}>Tom Robert</a>
+            <a href="#tarif" className="text-xl font-serif font-bold text-gray-900" onClick={() => setMenuOpen(false)}>Tarif</a>
+            <a href="#contact" className="text-xl font-serif font-bold text-gray-900" onClick={() => setMenuOpen(false)}>Contact</a>
+            <a href="#communaute" className="text-xl font-serif font-bold text-gray-900" onClick={() => setMenuOpen(false)}>La communauté</a>
           </div>
         )}
       </div>
 
       {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center overflow-hidden z-0 md:fixed md:inset-0 md:min-h-screen md:mt-0 bg-transparent pb-8 md:py-0">
+      <div className="fixed inset-0 min-h-screen flex items-center justify-center overflow-hidden z-0 md:fixed md:inset-0 md:min-h-screen md:mt-0 bg-transparent pb-8 md:py-0">
         {/* Background Image */}
         <div className="absolute inset-0 bg-white">
         <Image
@@ -164,7 +161,7 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-40 md:mt-[56rem]">
+        <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-32 md:mt-[56rem]">
           <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-8 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
           <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-2 md:mb-8">Réserve ta séance</button>
         </div>
@@ -179,7 +176,7 @@ export default function Home() {
         <motion.div
           id="tom-robert"
           ref={praticienRef}
-          className="relative pt-0 pb-0 md:py-20 md:mt-[100vh] mt-[-4rem]"
+          className="relative pt-0 pb-0 md:py-20 md:mt-[100vh] mt-[540px]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -196,14 +193,9 @@ export default function Home() {
               
               {/* Image */}
               <div className="w-full flex flex-col items-center justify-start md:w-full md:max-w-none" style={{ marginTop: '-3rem' }}>
-                {/* Titre TOM ROBERT au-dessus de la photo (mobile) */}
-                {typeof window !== 'undefined' && window.innerWidth < 768 && (
-                  <div className="w-full mb-2">
-                    <h2 className="text-xl font-bold text-center text-black">Tom Robert</h2>
-                  </div>
-                )}
+                {/* Titre TOM ROBERT au-dessus de la photo (mobile et desktop) */}
                 {/* Mobile : diplômes alternés à la place de la photo de Tom */}
-                <div className="relative w-[320px] h-[320px] max-w-xs md:w-full md:h-[1200px] md:rounded-lg md:overflow-hidden mb-1 md:mb-8 ml-0 mt-6 mx-auto flex items-center justify-center md:max-w-none">
+                <div className="relative w-[320px] h-[320px] max-w-xs md:w-full md:h-[1200px] md:rounded-lg md:overflow-hidden mb-0 md:mb-8 ml-0 mt-12 md:mt-4 mx-auto flex items-center justify-center md:max-w-none">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -226,7 +218,7 @@ export default function Home() {
               {/* Content */}
               <div className="lg:w-1/2 flex flex-col items-center text-center">
                 {/* TOM ROBERT centré au-dessus de la photo sur mobile, au-dessus sur desktop */}
-                <h2 className="hidden md:block text-2xl font-bold text-gray-900 mb-4 text-center">Tom Robert</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">Tom Robert</h2>
                 
                 <div className="px-4 w-full">
                   {/* Barre noire décorative au-dessus du texte, mobile uniquement, animée */}
@@ -486,7 +478,7 @@ export default function Home() {
             muted 
             playsInline 
             loop
-            className="w-full h-auto rounded-xl shadow-lg object-cover"
+            className="w-full h-auto rounded-xl shadow-lg object-cover z-50 relative"
             style={{ maxHeight: '600px' }}
           />
         </div>
@@ -637,7 +629,7 @@ export default function Home() {
         </div>
         
         {/* Section Contact Praticien sous les avis */}
-        <div className="block md:hidden w-full py-8 border-t border-gray-200" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
+        <div className="block md:hidden w-full py-8 border-t border-gray-200 z-50 relative" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
           <div className="max-w-2xl mx-auto px-4">
             <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Contact</h2>
             <div className="mb-2 font-bold text-lg text-black">TOM ROBERT</div>

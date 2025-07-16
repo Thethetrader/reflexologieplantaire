@@ -170,7 +170,7 @@ export default function Home() {
         {/* Content */}
         <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-32 md:mt-[56rem]">
           <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-8 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
-          <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-2 md:mb-8">Réserve ta séance</button>
+          <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-16 md:mb-20">Réserve ta séance</button>
         </div>
       </div>
 

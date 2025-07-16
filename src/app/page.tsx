@@ -85,7 +85,7 @@ export default function Home() {
       {/* Barre de progression mobile */}
       {/* (Suppression de la div de barre de progression tout en haut) */}
       {/* Navigation */}
-      <nav className="bg-white fixed w-full top-0 z-50 border-b border-gray-200 hidden md:block shadow-md">
+      <nav className="bg-white fixed w-full top-0 z-50 hidden md:block" style={{ background: 'linear-gradient(to bottom, #fff 90%, rgba(0,0,0,0.15) 100%)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Desktop: texte */}
@@ -93,11 +93,11 @@ export default function Home() {
             {/* Liens de navigation desktop */}
             <div className="flex gap-8">
               <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Réflexologie plantaire</a>
-              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Tom Robert</a>
-              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Tarif</a>
-              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Contact</a>
+              <a href="#tom-robert" className="text-gray-900 hover:text-purple-600 font-medium">Tom Robert</a>
+              <a href="#tarif" className="text-gray-900 hover:text-purple-600 font-medium">Tarif</a>
+              <a href="#contact" className="text-gray-900 hover:text-purple-600 font-medium">Contact</a>
               <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">Prise de rendez-vous</a>
-              <a href="#" className="text-gray-900 hover:text-purple-600 font-medium">La communauté</a>
+              <a href="#communaute" className="text-gray-900 hover:text-purple-600 font-medium">La communauté</a>
             </div>
           </div>
         </div>
@@ -135,10 +135,21 @@ export default function Home() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
+        {/* Menu mobile déroulant */}
+        {menuOpen && (
+          <div className="fixed top-14 left-0 w-full bg-white shadow-lg z-[200] flex flex-col items-center py-6 space-y-4 md:hidden">
+            <a href="#" className="text-gray-900 text-lg font-medium">Réflexologie plantaire</a>
+            <a href="#" className="text-gray-900 text-lg font-medium">Tom Robert</a>
+            <a href="#" className="text-gray-900 text-lg font-medium">Tarif</a>
+            <a href="#" className="text-gray-900 text-lg font-medium">Contact</a>
+            <a href="#" className="text-gray-900 text-lg font-medium">Prise de rendez-vous</a>
+            <a href="#" className="text-gray-900 text-lg font-medium">La communauté</a>
+          </div>
+        )}
       </div>
 
       {/* Hero Section */}
-      <div className="fixed inset-0 z-0 min-h-screen flex items-center justify-center overflow-hidden bg-transparent py-0 md:relative md:inset-auto md:z-auto md:min-h-screen md:mt-0 md:py-[30rem]">
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden z-0 md:fixed md:inset-0 md:min-h-screen md:mt-0 bg-transparent pb-8 md:py-0">
         {/* Background Image */}
         <div className="absolute inset-0 bg-white">
         <Image
@@ -154,8 +165,8 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-0 md:mt-[56rem]">
-          <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-48 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
+        <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-32 md:mt-[56rem]">
+          <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-8 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
           <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-2 md:mb-8">Réserve ta séance</button>
         </div>
       </div>
@@ -163,60 +174,65 @@ export default function Home() {
       {/* Bandeau beige sous le Hero */}
       <div style={{ width: '100%', height: '140px', background: '#ECE5D9' }} />
 
-      {/* Contenu du site après le hero */}
-      <div className="w-full" style={{ marginTop: '100vh' }}>
+      {/* Contenu du site après le hero, sans fond supplémentaire */}
+      <div className="w-full">
         {/* Practitioner Section */}
         <motion.div
+          id="tom-robert"
           ref={praticienRef}
-          className="relative z-10 py-0 md:py-20 bg-white md:mt-[100vh] mt-8"
+          className="relative pt-0 pb-0 md:py-20 md:mt-[100vh] mt-[-4rem]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
+          {/* Fond dégradé en absolute, sous le contenu */}
+          <div className="absolute inset-0 w-full h-full" style={{ zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(to bottom, #ECE5D9 0%, #fff 100%)' }} />
+          {/* Contenu Tom Robert au-dessus */}
+          <div className="relative z-10">
           {/* Barre de progression mobile au-dessus de la photo */}
           {/* (Suppression de la div de barre de progression mobile) */}
           <div className="max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-16">
               
               {/* Image */}
-              <div className="lg:w-1/2 flex flex-col items-start justify-start w-full md:w-auto" style={{ marginTop: '-3rem' }}>
-                 {/* Mobile : diplômes alternés à la place de la photo de Tom */}
-                 <div className="relative w-[320px] h-[320px] max-w-xs md:w-80 md:h-80 md:rounded-lg md:overflow-hidden mb-1 md:mb-8 ml-0 mt-12 mx-auto flex items-center justify-center">
-                   <motion.div
-                     initial={{ opacity: 0, y: 30 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.6 }}
-                     viewport={{ once: true }}
-                     className="relative w-full h-full"
-                   >
-                     <Image
-                       src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
-                       alt="Tom Robert - Réflexologue"
-                       width={320}
-                       height={320}
-                       className="object-cover w-full h-full md:rounded-lg"
-                       style={{ objectPosition: 'center 15%' }}
-                     />
-                   </motion.div>
-                 </div>
-                 {/* Titre TOM ROBERT sous la photo (mobile) */}
-                 {typeof window !== 'undefined' && window.innerWidth < 768 && (
-                   <div className="w-full mt-2 -mb-12">
-                     <h2 className="text-xl font-bold text-center text-black">Tom Robert</h2>
-                   </div>
-                 )}
+              <div className="w-full flex flex-col items-center justify-start md:w-full md:max-w-none" style={{ marginTop: '-3rem' }}>
+                {/* Titre TOM ROBERT au-dessus de la photo (mobile) */}
+                {typeof window !== 'undefined' && window.innerWidth < 768 && (
+                  <div className="w-full mb-2">
+                    <h2 className="text-xl font-bold text-center text-black">Tom Robert</h2>
+                  </div>
+                )}
+                {/* Mobile : diplômes alternés à la place de la photo de Tom */}
+                <div className="relative w-[320px] h-[320px] max-w-xs md:w-full md:h-[1200px] md:rounded-lg md:overflow-hidden mb-1 md:mb-8 ml-0 mt-6 mx-auto flex items-center justify-center md:max-w-none">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="relative w-full h-full"
+                  >
+                    <Image
+                      src="/Brad_Pitt_2019_by_Glenn_Francis.jpg"
+                      alt="Tom Robert - Réflexologue"
+                      width={1280}
+                      height={1200}
+                      className="object-cover w-full h-full md:rounded-lg"
+                      style={{ objectPosition: 'center 15%' }}
+                    />
+                  </motion.div>
+                </div>
               </div>
               
               {/* Content */}
-              <div className="lg:w-1/2">
+              <div className="lg:w-1/2 flex flex-col items-center text-center">
                 {/* TOM ROBERT centré au-dessus de la photo sur mobile, au-dessus sur desktop */}
-                <h2 className="hidden md:block text-2xl font-bold text-gray-900 mb-4 text-left">Tom Robert</h2>
+                <h2 className="hidden md:block text-2xl font-bold text-gray-900 mb-4 text-center">Tom Robert</h2>
                 
-                <div className="px-4">
+                <div className="px-4 w-full">
                   {/* Barre noire décorative au-dessus du texte, mobile uniquement, animée */}
                   <motion.div
-                    className="h-1 w-24 bg-black rounded-full mx-auto mb-4"
+                    className="h-1 w-40 bg-black rounded-full mx-auto mb-4"
                     initial={{ width: 0 }}
                     whileInView={{ width: '6rem' }}
                     animate={{ width: 0 }}
@@ -233,7 +249,7 @@ export default function Home() {
                   </div>
                    {/* Barre noire décorative sous le texte, mobile uniquement, animée */}
                    <motion.div
-                     className="h-1 w-24 bg-black rounded-full mx-auto mt-4"
+                     className="h-1 w-40 bg-black rounded-full mx-auto mt-4"
                      initial={{ width: 0 }}
                      whileInView={{ width: '6rem' }}
                      animate={{ width: 0 }}
@@ -247,7 +263,7 @@ export default function Home() {
             </div>
           </div>
           {/* Diplômes : carrousel horizontal sur mobile, côte à côte sur desktop */}
-          <div className="mt-0 md:mt-12 mb-0 md:mb-4 w-full">
+          <div className="mt-0 md:mt-4 mb-0 md:mb-2 w-full">
             {/* Desktop : côte à côte comme avant */}
             <div className="hidden md:flex flex-row items-center justify-center gap-12 md:mb-4">
               <motion.div
@@ -284,10 +300,11 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
+          </div>
         </motion.div>
 
         {/* FAQ Section */}
-        <div className="relative z-10 pt-4 md:pt-20 pb-20" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
+        <div className="relative z-10 pt-4 md:pt-8 pb-20" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-8 text-center">
               
@@ -308,7 +325,7 @@ export default function Home() {
                   animate={{ width: 0, opacity: 0 }}
                   viewport={{ once: false, amount: 0.7 }}
                   transition={{ duration: 0.7 }}
-                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8 mt-8"
+                  className="h-1 w-40 bg-gray-300 rounded-full mx-auto mb-8 mt-8"
                   style={{ maxWidth: 220 }}
                 />
               </div>
@@ -324,7 +341,7 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {/* Carte 1 : Sommeil & Stress */}
                 <motion.div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125"
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 md:hover:scale-105 hover:shadow-2xl"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -336,7 +353,7 @@ export default function Home() {
                 </motion.div>
                 {/* Carte 2 : Douleurs & Tensions */}
                 <motion.div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125"
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 md:hover:scale-105 hover:shadow-2xl"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -348,7 +365,7 @@ export default function Home() {
                 </motion.div>
                 {/* Carte 3 : Digestion */}
                 <motion.div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125"
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 md:hover:scale-105 hover:shadow-2xl"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -360,7 +377,7 @@ export default function Home() {
                 </motion.div>
                 {/* Carte 4 : Énergie & Immunité */}
                 <motion.div
-                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 active:scale-125"
+                  className="bg-gradient-to-br from-[#f8f9fa] to-[#ece5d9] rounded-2xl shadow-xl p-4 flex flex-col items-center text-center transition-all duration-300 md:hover:scale-105 hover:shadow-2xl"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
@@ -378,12 +395,12 @@ export default function Home() {
                 animate={{ width: 0, opacity: 0 }}
                 viewport={{ once: false, amount: 0.7 }}
                 transition={{ duration: 0.7 }}
-                className="h-1 bg-gray-300 rounded-full mx-auto mb-8"
+                className="h-1 w-40 bg-gray-300 rounded-full mx-auto mb-8"
                 style={{ maxWidth: 220 }}
               />
               
               {/* Section Tarif déplacée ici */}
-              <div className="relative z-10 mb-4">
+              <div id="tarif" className="relative z-10 mb-4">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                   <h2
                     className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase text-center"
@@ -406,7 +423,7 @@ export default function Home() {
                       whileInView={{ width: '100%', opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.7 }}
-                      className="h-1 bg-gray-300 rounded-full mx-auto mt-4"
+                      className="h-1 w-40 bg-gray-300 rounded-full mx-auto mt-4"
                       style={{ maxWidth: 120 }}
                     />
                   </div>
@@ -415,28 +432,41 @@ export default function Home() {
               {/* Nouvelle question/réponse */}
               <div>
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">ET TU PRATIQUES OÙ ?</h3>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">Dans divers cabinets à Paris, à domicile, sur ton lieu de travail, à ton pop-up store, ou même en backstage avant ou après ton concert.</p>
+                <div className="text-base md:text-lg text-gray-600 leading-relaxed mb-6 space-y-2">
+                  <p>Je pratique dans deux cabinets à Paris :</p>
+                  <ul className="list-disc list-inside ml-4">
+                    <li><span className="font-semibold text-black">Centre Anima</span> — 31, rue de Maubeuge, 75009 Paris</li>
+                    <li><span className="font-semibold text-black">Studio KAH</span> — 28, rue Bichat, 75010 Paris</li>
+                  </ul>
+                  <p>Mais aussi à domicile, sur ton lieu de travail, à ton pop-up store, ou même en backstage avant ou après ton concert.</p>
+                </div>
                 {/* Trait animé après la réponse */}
                 <motion.div
                   initial={{ width: 0, opacity: 0 }}
                   whileInView={{ width: '100%', opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7 }}
-                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8 md:hidden"
+                  className="h-1 w-40 bg-gray-300 rounded-full mx-auto mb-8 md:hidden"
                   style={{ maxWidth: 220 }}
                 />
               </div>
               {/* Question pour qui déplacée en dernier */}
-              <div className="text-center mt-0">
+              <div className="text-center mt-8">
+                {/* Barre décorative avant la question, visible sur ordi */}
+                <div className="hidden md:block h-1 w-40 bg-gray-300 rounded-full mx-auto mb-6" />
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">MAIS EN FAIT, C'EST POUR QUI ?</h3>
                 <p className="text-lg md:text-2xl text-black font-bold uppercase mb-4">TOUS LE MONDE.</p>
+                {/* Vidéo autoplay visible seulement sur ordi */}
+                <div className="hidden md:block w-full max-w-3xl mx-auto my-8">
+                  <video src="/video.mp4" autoPlay muted loop playsInline className="w-full h-auto rounded-xl shadow-lg" />
+                </div>
                 {/* Trait animé après la réponse */}
                 <motion.div
                   initial={{ width: 0, opacity: 0 }}
                   whileInView={{ width: '100%', opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7 }}
-                  className="h-1 bg-gray-300 rounded-full mx-auto mb-8 md:hidden"
+                  className="h-1 w-40 bg-gray-300 rounded-full mx-auto mb-8 md:hidden"
                   style={{ maxWidth: 220 }}
                 />
                 <button
@@ -450,7 +480,7 @@ export default function Home() {
         </div>
 
         {/* Vidéo mobile avant la boîte de contact */}
-        <div className="block md:hidden w-full relative z-50">
+        <div className="block md:hidden w-full">
           <video 
             src="/video.mp4" 
             autoPlay 
@@ -462,10 +492,12 @@ export default function Home() {
           />
         </div>
         {/* Section Contact */}
-        <div id="contact" className="relative z-[100] py-20 bg-white md:z-10 md:relative">
+        <div id="contact" className="relative z-10 py-12 md:py-16 bg-white">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Prendre rendez-vous</h2>
-            <form className="bg-white rounded-2xl shadow-xl p-8 space-y-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            <form className="bg-white rounded-2xl shadow-xl p-8 space-y-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-visible">
+              {/* Ombre en haut de la boîte de contact mobile */}
+              <div className="absolute left-0 top-0 w-full h-4 rounded-t-2xl shadow-[0_-8px_16px_-8px_rgba(0,0,0,0.15)] pointer-events-none z-20" />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">Nom</label>
@@ -492,6 +524,15 @@ export default function Home() {
                 </div>
               </div>
               <div>
+                <label className="block text-gray-700 font-semibold mb-2">Lieux souhaité</label>
+                <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black">
+                  <option value="" disabled selected>Choisissez un lieu</option>
+                  <option value="anima">Centre Anima — 31, rue de Maubeuge, 75009 Paris</option>
+                  <option value="kah">Studio KAH — 28, rue Bichat, 75010 Paris</option>
+                  <option value="domicile">À domicile</option>
+                </select>
+              </div>
+              <div>
                 <label className="block text-gray-700 font-semibold mb-2">Adresse mail</label>
                 <input type="email" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ex : marie.dupont@email.com" />
               </div>
@@ -507,7 +548,7 @@ export default function Home() {
         </div>
 
         {/* Instagram Gallery Section + Avis */}
-        <div className="relative z-10 pt-8 md:pt-20 pb-2 min-h-[700px] bg-white">
+        <div id="communaute" className="relative z-10 pt-8 md:pt-8 pb-2 min-h-[700px] bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">La Communauté</h2>
@@ -596,15 +637,15 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Petite section beige sous les avis */}
-        <div className="w-full pt-2 pb-8 relative z-[100]" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
-          <div className="max-w-2xl mx-auto px-4 text-center">
+        {/* Section Contact Praticien sous les avis */}
+        <div className="block md:hidden w-full py-8 border-t border-gray-200" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
+          <div className="max-w-2xl mx-auto px-4">
             <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Contact</h2>
             <div className="mb-2 font-bold text-lg text-black">TOM ROBERT</div>
             <div className="text-gray-600 mb-1">25 rue bichat, 75010 Paris</div>
             <div className="text-gray-600 mb-1">06 31 83 05 44</div>
             <div className="text-gray-600 mb-4">tom.reflexologue@gmail.com</div>
-            <div className="flex gap-3 mt-2 justify-center items-center">
+            <div className="flex gap-3 mt-2">
               <a href="#" className="flex items-center justify-center w-10 h-10 bg-[#232b35] rounded-full">
                 {/* Icône Instagram SVG */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="white" strokeWidth="1.5">
@@ -613,15 +654,6 @@ export default function Home() {
                   <circle cx="17" cy="7" r="1.2" fill="white"/>
                 </svg>
               </a>
-              <button
-                className="bg-black text-white rounded-full px-4 py-1 text-sm font-bold shadow-md mx-2"
-                onClick={() => {
-                  const contact = document.getElementById('contact');
-                  if (contact) contact.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                RDV
-              </button>
               <a href="#" className="flex items-center justify-center w-10 h-10 bg-[#232b35] rounded-full">
                 {/* Icône Facebook SVG */}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-6 h-6">
@@ -629,6 +661,35 @@ export default function Home() {
                 </svg>
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+      {/* Section Contact en bas de page, visible sur ordi uniquement */}
+      <div className="hidden md:block w-full py-8 border-t border-gray-200 relative z-50" style={{ background: 'linear-gradient(to bottom, #fff 0%, #ECE5D9 100%)' }}>
+        <div className="max-w-2xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Contact</h2>
+          <div className="mb-2 font-bold text-lg text-black">TOM ROBERT</div>
+          <div className="text-gray-600 mb-1">25 rue bichat, 75010 Paris</div>
+          <div className="text-gray-600 mb-1">06 31 83 05 44</div>
+          <div className="text-gray-600 mb-4">tom.reflexologue@gmail.com</div>
+          <div className="flex flex-col items-center gap-3 mt-2 justify-center">
+            <div className="flex gap-3 justify-center">
+              <a href="#" className="flex items-center justify-center w-10 h-10 bg-[#232b35] rounded-full">
+                {/* Icône Instagram SVG */}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="white" strokeWidth="1.5">
+                  <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="white" strokeWidth="1.5"/>
+                  <circle cx="12" cy="12" r="5" fill="none" stroke="white" strokeWidth="1.5"/>
+                  <circle cx="17" cy="7" r="1.2" fill="white"/>
+                </svg>
+              </a>
+              <a href="#" className="flex items-center justify-center w-10 h-10 bg-[#232b35] rounded-full">
+                {/* Icône Facebook SVG */}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-6 h-6">
+                  <path d="M22 12c0-5.522-4.478-10-10-10S2 6.478 2 12c0 5 3.657 9.127 8.438 9.877v-6.987h-2.54v-2.89h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.632.771-1.632 1.562v1.875h2.773l-.443 2.89h-2.33v6.987C18.343 21.127 22 17 22 12z" />
+                </svg>
+              </a>
+            </div>
+            <button className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-8 rounded-full transition-all duration-300 transform hover:scale-105 text-lg mt-2">RDV</button>
           </div>
         </div>
       </div>

@@ -138,12 +138,11 @@ export default function Home() {
         {/* Menu mobile déroulant */}
         {menuOpen && (
           <div className="fixed top-14 left-0 w-full bg-white shadow-lg z-[200] flex flex-col items-center py-6 space-y-4 md:hidden">
-            <a href="#" className="text-gray-900 text-lg font-medium">Réflexologie plantaire</a>
-            <a href="#" className="text-gray-900 text-lg font-medium">Tom Robert</a>
-            <a href="#" className="text-gray-900 text-lg font-medium">Tarif</a>
-            <a href="#" className="text-gray-900 text-lg font-medium">Contact</a>
-            <a href="#" className="text-gray-900 text-lg font-medium">Prise de rendez-vous</a>
-            <a href="#" className="text-gray-900 text-lg font-medium">La communauté</a>
+            <a href="#" className="text-gray-900 text-lg font-medium" onClick={() => setMenuOpen(false)}>Réflexologie plantaire</a>
+            <a href="#tom-robert" className="text-gray-900 text-lg font-medium" onClick={() => setMenuOpen(false)}>Tom Robert</a>
+            <a href="#tarif" className="text-gray-900 text-lg font-medium" onClick={() => setMenuOpen(false)}>Tarif</a>
+            <a href="#contact" className="text-gray-900 text-lg font-medium" onClick={() => setMenuOpen(false)}>Contact</a>
+            <a href="#communaute" className="text-gray-900 text-lg font-medium" onClick={() => setMenuOpen(false)}>La communauté</a>
           </div>
         )}
       </div>
@@ -165,7 +164,7 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-32 md:mt-[56rem]">
+        <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-40 md:mt-[56rem]">
           <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-8 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
           <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-2 md:mb-8">Réserve ta séance</button>
         </div>

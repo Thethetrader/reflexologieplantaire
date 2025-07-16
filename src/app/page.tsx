@@ -80,6 +80,13 @@ export default function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    // Force scroll en haut à l’ouverture sur mobile
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen w-full" style={{ background: 'linear-gradient(to right, #ECE5D9 0%, #fff 100%)' }}>
       {/* Barre de progression mobile */}
@@ -89,7 +96,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Desktop: texte */}
-            <span className="text-2xl font-bold text-gray-900">Reflexologie plantaire</span>
+            <a href="#" className="text-2xl font-bold text-gray-900 hover:text-purple-600 transition-colors duration-200">Reflexologie plantaire</a>
             {/* Liens de navigation desktop */}
             <div className="flex gap-8">
               <a href="#tom-robert" className="text-xl font-serif font-bold text-gray-900 hover:text-purple-600">Tom Robert</a>

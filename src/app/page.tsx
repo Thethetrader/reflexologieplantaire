@@ -176,7 +176,7 @@ export default function Home() {
         <motion.div
           id="tom-robert"
           ref={praticienRef}
-          className="relative pt-0 pb-0 md:py-20 md:mt-[100vh] mt-[560px]"
+          className="relative pt-0 pb-0 md:py-20 md:mt-[100vh] mt-[620px]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

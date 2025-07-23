@@ -111,7 +111,7 @@ export default function Home() {
         {/* Logo à gauche */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <Image
-            src="/logo reflexologie 2025 lighter.jpg"
+            src="/logo-reflexologie-2025-lighter.jpg"
             alt="Logo Reflexologie"
             width={36}
             height={36}

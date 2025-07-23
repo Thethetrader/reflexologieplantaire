@@ -89,13 +89,18 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Desktop: texte */}
-            <span className="text-2xl font-bold text-gray-900">Reflexologie plantaire</span>
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="text-2xl font-bold text-gray-900 hover:text-purple-600 cursor-pointer transition-colors duration-200"
+            >
+              Reflexologie plantaire
+            </button>
             {/* Liens de navigation desktop */}
             <div className="flex gap-8">
-              <a href="#tom-robert" className="text-xl font-serif font-bold text-gray-900 hover:text-purple-600">Tom Robert</a>
-              <a href="#tarif" className="text-xl font-serif font-bold text-gray-900 hover:text-purple-600">Tarif</a>
-              <a href="#contact" className="text-xl font-serif font-bold text-gray-900 hover:text-purple-600">Contact</a>
-              <a href="#communaute" className="text-xl font-serif font-bold text-gray-900 hover:text-purple-600">La communauté</a>
+              <a href="#tom-robert" className="text-xl font-serif font-bold text-gray-900 hover:text-black transition-all duration-300 transform hover:scale-105" onClick={(e) => { e.preventDefault(); document.getElementById('tom-robert')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Tom Robert</a>
+              <a href="#tarif" className="text-xl font-serif font-bold text-gray-900 hover:text-black transition-all duration-300 transform hover:scale-105" onClick={(e) => { e.preventDefault(); const element = document.getElementById('tarif'); if (element) { const offset = 80; const elementPosition = element.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - offset; window.scrollTo({ top: offsetPosition, behavior: 'smooth' }); } }}>Tarif</a>
+              <a href="#contact" className="text-xl font-serif font-bold text-gray-900 hover:text-black transition-all duration-300 transform hover:scale-105" onClick={(e) => { e.preventDefault(); const element = document.getElementById('contact'); if (element) { const offset = 40; const elementPosition = element.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - offset; window.scrollTo({ top: offsetPosition, behavior: 'smooth' }); } }}>Contact</a>
+              <a href="#communaute" className="text-xl font-serif font-bold text-gray-900 hover:text-black transition-all duration-300 transform hover:scale-105" onClick={(e) => { e.preventDefault(); const element = document.getElementById('communaute'); if (element) { const offset = 80; const elementPosition = element.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - offset; window.scrollTo({ top: offsetPosition, behavior: 'smooth' }); } }}>La communauté</a>
             </div>
           </div>
         </div>
@@ -136,10 +141,10 @@ export default function Home() {
         {/* Menu mobile déroulant */}
         {menuOpen && (
           <div className="fixed top-14 left-0 w-full bg-white shadow-lg z-[200] flex flex-col items-center py-6 space-y-4 md:hidden">
-            <a href="#tom-robert" className="text-xl font-serif font-bold text-gray-900" onClick={() => setMenuOpen(false)}>Tom Robert</a>
-            <a href="#tarif" className="text-xl font-serif font-bold text-gray-900" onClick={() => setMenuOpen(false)}>Tarif</a>
-            <a href="#contact" className="text-xl font-serif font-bold text-gray-900" onClick={() => setMenuOpen(false)}>Contact</a>
-            <a href="#communaute" className="text-xl font-serif font-bold text-gray-900" onClick={() => setMenuOpen(false)}>La communauté</a>
+            <a href="#tom-robert" className="text-xl font-serif font-bold text-gray-900 hover:text-black transition-all duration-300 transform hover:scale-105" onClick={(e) => { e.preventDefault(); setMenuOpen(false); document.getElementById('tom-robert')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Tom Robert</a>
+            <a href="#tarif" className="text-xl font-serif font-bold text-gray-900 hover:text-black transition-all duration-300 transform hover:scale-105" onClick={(e) => { e.preventDefault(); setMenuOpen(false); const element = document.getElementById('tarif'); if (element) { const offset = 80; const elementPosition = element.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - offset; window.scrollTo({ top: offsetPosition, behavior: 'smooth' }); } }}>Tarif</a>
+            <a href="#contact" className="text-xl font-serif font-bold text-gray-900 hover:text-black transition-all duration-300 transform hover:scale-105" onClick={(e) => { e.preventDefault(); setMenuOpen(false); const element = document.getElementById('contact'); if (element) { const offset = 40; const elementPosition = element.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - offset; window.scrollTo({ top: offsetPosition, behavior: 'smooth' }); } }}>Contact</a>
+            <a href="#communaute" className="text-xl font-serif font-bold text-gray-900 hover:text-black transition-all duration-300 transform hover:scale-105" onClick={(e) => { e.preventDefault(); setMenuOpen(false); const element = document.getElementById('communaute'); if (element) { const offset = 80; const elementPosition = element.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - offset; window.scrollTo({ top: offsetPosition, behavior: 'smooth' }); } }}>La communauté</a>
           </div>
         )}
       </div>
@@ -163,7 +168,20 @@ export default function Home() {
         {/* Content */}
         <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-32 md:mt-[56rem]">
           <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-8 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
-          <button className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-2 md:mb-8">Réserve ta séance</button>
+          <button 
+            onClick={() => {
+              const element = document.getElementById('contact');
+              if (element) {
+                const offset = 40;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+              }
+            }}
+            className="bg-black hover:bg-gray-800 text-white font-bold py-3 md:py-4 px-6 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 mb-2 md:mb-8"
+          >
+            Réserve ta séance
+          </button>
         </div>
       </div>
 
@@ -186,16 +204,29 @@ export default function Home() {
           <div className="absolute inset-0 w-full h-full" style={{ zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(to bottom, #ECE5D9 0%, #fff 100%)' }} />
           {/* Contenu Tom Robert au-dessus */}
           <div className="relative z-10">
+          
+          {/* Vidéo au-dessus de la photo de Tom Robert */}
+          <div className="w-full max-w-3xl mx-auto mb-8 relative z-20">
+            <video 
+              src="/videopied.MOV" 
+              autoPlay 
+              muted 
+              playsInline 
+              loop
+              className="w-full h-auto rounded-xl shadow-lg"
+            />
+          </div>
+          
           {/* Barre de progression mobile au-dessus de la photo */}
           {/* (Suppression de la div de barre de progression mobile) */}
           <div className="max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col lg:flex-row items-center gap-16">
               
               {/* Image */}
-              <div className="w-full flex flex-col items-center justify-start md:w-full md:max-w-none" style={{ marginTop: '-3rem' }}>
+              <div className="w-full flex flex-col items-center justify-center md:w-full md:max-w-none" style={{ marginTop: '-3rem' }}>
                 {/* Titre TOM ROBERT au-dessus de la photo (mobile et desktop) */}
                 {/* Mobile : diplômes alternés à la place de la photo de Tom */}
-                <div className="relative w-[320px] h-[320px] max-w-xs md:w-full md:h-[1200px] md:rounded-lg md:overflow-hidden mb-0 md:mb-8 ml-0 mt-12 mx-auto flex items-center justify-center md:max-w-none">
+                <div className="relative w-[320px] h-[320px] max-w-xs md:w-full md:h-[1200px] md:rounded-lg md:overflow-hidden mb-0 md:mb-8 mt-12 mx-auto flex items-center justify-center md:max-w-none">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -265,22 +296,6 @@ export default function Home() {
                 transition={{ duration: 0.7 }}
               >
                 <Image
-                  src="/diplome-reflexologie.jpeg"
-                  alt="Diplôme de réflexologue plantaire"
-                  width={800}
-                  height={560}
-                  className="rounded-lg shadow-md w-full md:w-[800px] md:h-[560px]"
-                />
-                <div className="absolute inset-0 rounded-lg" style={{ background: 'rgba(236, 229, 217, 0.35)' }} />
-              </motion.div>
-              <motion.div
-                className="relative transition-all duration-300 scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-              >
-                <Image
                   src="/certificat-reflexologie.jpeg"
                   alt="Certificat de Réflexologie Traditionnelle & Evolutive"
                   width={800}
@@ -302,7 +317,7 @@ export default function Home() {
               {/* Question 1 */}
               <div className="text-center mb-8">
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">
-                  MAIS EN FAIT, C'EST QUOI LA RÉFLEXOLOGIE PLANTAIRE ?
+                  C'EST QUOI LA RÉFLEXOLOGIE PLANTAIRE ?
                 </h3>
                 <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
                   La réflexologie est une approche <span className="font-bold text-black">thérapeutique et préventive</span> dont les fondements tissent leurs racines dans la médecine traditionnelle chinoise, et qui <span className="font-bold text-black">actualisée à nos vies "modernes"</span>.<br/>
@@ -425,9 +440,9 @@ export default function Home() {
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">ET TU PRATIQUES OÙ ?</h3>
                 <div className="text-base md:text-lg text-gray-600 leading-relaxed mb-6 space-y-2">
                   <p>Je pratique dans deux cabinets à Paris :</p>
-                  <ul className="list-disc list-inside ml-4">
-                    <li><span className="font-semibold text-black">Centre Anima</span> — 31, rue de Maubeuge, 75009 Paris</li>
-                    <li><span className="font-semibold text-black">Studio KAH</span> — 28, rue Bichat, 75010 Paris</li>
+                  <ul className="list-disc list-inside ml-2 md:ml-4">
+                    <li className="md:block"><span className="font-semibold text-black"><span className="hidden md:inline">•   </span>Centre Anima</span> — 31, r. de Maubeuge, 75009</li>
+                    <li><span className="font-semibold text-black">Studio KAH</span> — 28, rue Bichat, 75010</li>
                   </ul>
                   <p>Mais aussi à domicile, sur ton lieu de travail, à ton pop-up store, ou même en backstage avant ou après ton concert.</p>
                 </div>
@@ -461,6 +476,15 @@ export default function Home() {
                   style={{ maxWidth: 220 }}
                 />
                 <button
+                  onClick={() => {
+                    const element = document.getElementById('contact');
+                    if (element) {
+                      const offset = 40;
+                      const elementPosition = element.getBoundingClientRect().top;
+                      const offsetPosition = elementPosition + window.pageYOffset - offset;
+                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }
+                  }}
                   className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 mt-2 md:mt-4"
                 >
                   Réserve ta séance
@@ -506,22 +530,22 @@ export default function Home() {
                 </div>
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">Forfait souhaité</label>
-                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black">
+                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black text-gray-900">
                     <option value="" disabled selected>Choisissez un forfait</option>
-                    <option value="1h">Séance 1h</option>
-                    <option value="3h">Séance 3h</option>
-                    <option value="6h">Séance 6h</option>
+                    <option value="1h">1 séance 1h</option>
+                    <option value="3h">3 séances 1h</option>
+                    <option value="5h">5 séances 1h</option>
                   </select>
                 </div>
               </div>
               <div>
                 <label className="block text-gray-700 font-semibold mb-2">Lieux souhaité</label>
-                <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black">
-                  <option value="" disabled selected>Choisissez un lieu</option>
-                  <option value="anima">Centre Anima — 31, rue de Maubeuge, 75009 Paris</option>
-                  <option value="kah">Studio KAH — 28, rue Bichat, 75010 Paris</option>
-                  <option value="domicile">À domicile</option>
-                </select>
+                                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black text-gray-900">
+                    <option value="" disabled selected>Choisissez un lieu</option>
+                    <option value="anima">Centre Anima — 31, rue de Maubeuge, 75009 Paris</option>
+                    <option value="kah">Studio KAH — 28, rue Bichat, 75010 Paris</option>
+                    <option value="domicile">À domicile</option>
+                  </select>
               </div>
               <div>
                 <label className="block text-gray-700 font-semibold mb-2">Adresse mail</label>

@@ -154,7 +154,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 bg-white">
         <Image
-            src="/logo reflexologie 2025 lighter.jpg"
+            src="/logo-reflexologie-2025-lighter.jpg"
             alt="Reflexologie background"
             fill
             className="object-contain h-40 md:object-cover md:h-auto mt-48 md:mt-0"

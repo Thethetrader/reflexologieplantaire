@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "Réflexologie plantaire à Paris. Séances de 1h à 80€. Cabinet Anima et Studio KAH. Prise de rendez-vous en ligne.",
   icons: {
     icon: '/favicon.ico',
-    apple: '/logo-reflexologie-2025-lighter.jpg',
+    apple: '/apple-touch-icon.png',
   },
   appleWebApp: {
     capable: true,
@@ -35,7 +35,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/logo-reflexologie-2025-lighter.jpg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Réflexologie Plantaire" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

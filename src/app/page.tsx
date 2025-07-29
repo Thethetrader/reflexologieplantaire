@@ -461,6 +461,23 @@ export default function Home() {
                 <div className="hidden md:block h-1 w-40 bg-gray-300 rounded-full mx-auto mb-6" />
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">MAIS EN FAIT, C'EST POUR QUI ?</h3>
                 <p className="text-lg md:text-2xl text-black font-bold uppercase mb-4">TOUS LE MONDE.</p>
+                {/* Bouton RDV desktop avant la vidéo */}
+                <div className="hidden md:block w-full text-center mb-4">
+                  <button
+                    onClick={() => {
+                      const element = document.getElementById('contact');
+                      if (element) {
+                        const offset = 40;
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                      }
+                    }}
+                    className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
+                  >
+                    Réserve ta séance
+                  </button>
+                </div>
                 {/* Vidéo autoplay visible seulement sur ordi */}
                 <div className="hidden md:block w-full max-w-3xl mx-auto my-8 relative z-20">
                   <video src="/video.mp4" autoPlay muted loop playsInline className="w-full h-auto rounded-xl shadow-lg" />
@@ -474,20 +491,6 @@ export default function Home() {
                   className="h-1 w-40 bg-gray-300 rounded-full mx-auto mb-8 md:hidden"
                   style={{ maxWidth: 220 }}
                 />
-                <button
-                  onClick={() => {
-                    const element = document.getElementById('contact');
-                    if (element) {
-                      const offset = 40;
-                      const elementPosition = element.getBoundingClientRect().top;
-                      const offsetPosition = elementPosition + window.pageYOffset - offset;
-                      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    }
-                  }}
-                  className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 mt-2 md:mt-4"
-                >
-                  Réserve ta séance
-                </button>
               </div>
             </div>
           </div>

@@ -313,7 +313,7 @@ export default function Home() {
                 transition={{ duration: 0.7, delay: 0.2 }}
               >
                 <Image
-                  src="/diplome2.jpeg"
+                  src="/diplome2.png"
                   alt="Diplôme de Réflexologie"
                   width={800}
                   height={560}

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Réflexologie Plantaire - Tom Robert",
   description: "Réflexologie plantaire à Paris. Séances de 1h à 80€. Cabinet Anima et Studio KAH. Prise de rendez-vous en ligne.",
   icons: {
-    icon: '/logo-reflexologie-2025-lighter.jpg',
+    icon: '/favicon.ico',
     apple: '/logo-reflexologie-2025-lighter.jpg',
   },
   appleWebApp: {
@@ -33,6 +33,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/logo-reflexologie-2025-lighter.jpg" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

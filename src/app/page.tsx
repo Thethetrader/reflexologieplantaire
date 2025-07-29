@@ -305,6 +305,22 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 rounded-lg" style={{ background: 'rgba(236, 229, 217, 0.35)' }} />
               </motion.div>
+              <motion.div
+                className="relative transition-all duration-300 scale-100 md:hover:scale-105 md:hover:shadow-2xl active:scale-125"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+              >
+                <Image
+                  src="/diplome2.jpeg"
+                  alt="Diplôme de Réflexologie"
+                  width={800}
+                  height={560}
+                  className="rounded-lg shadow-md w-full md:w-[800px] md:h-[560px]"
+                />
+                <div className="absolute inset-0 rounded-lg" style={{ background: 'rgba(236, 229, 217, 0.35)' }} />
+              </motion.div>
             </div>
           </div>
           </div>

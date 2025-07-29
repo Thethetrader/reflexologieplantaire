@@ -494,7 +494,7 @@ export default function Home() {
         </div>
 
         {/* Bouton RDV mobile avant la vidéo */}
-        <div className="block md:hidden w-full text-center -mb-4">
+        <div className="block md:hidden w-full text-center -mb-8">
           <button
             onClick={() => {
               const element = document.getElementById('contact');

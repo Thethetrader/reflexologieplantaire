@@ -209,7 +209,7 @@ export default function Home() {
           {/* Vidéo au-dessus de la photo de Tom Robert */}
           <div className="w-full max-w-3xl mx-auto mb-8 relative z-20">
             <video 
-              src="/videopied.MOV" 
+              src="/videopied.mp4" 
               autoPlay 
               muted 
               playsInline 

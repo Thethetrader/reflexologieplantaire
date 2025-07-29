@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
+
 export default function Home() {
   // plus d'effet FAQ
   // Pour masquer le hero mobile quand la section praticien arrive
@@ -510,28 +511,58 @@ export default function Home() {
         <div id="contact" className="relative z-10 py-12 md:py-16 bg-white">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Prendre rendez-vous</h2>
-            <form className="bg-white rounded-2xl shadow-xl p-8 space-y-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-visible">
+            <form onSubmit={async (e) => {
+              e.preventDefault();
+              const formData = new FormData(e.currentTarget);
+              const data = {
+                nom: formData.get('nom'),
+                prenom: formData.get('prenom'),
+                telephone: formData.get('telephone'),
+                forfait: formData.get('forfait'),
+                lieu: formData.get('lieu'),
+                email: formData.get('email'),
+                raison: formData.get('raison')
+              };
+              
+              try {
+                const response = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                  alert('Message envoyé avec succès !');
+                  e.currentTarget.reset();
+                } else {
+                  const error = await response.json();
+                  alert(error.error || 'Erreur lors de l\'envoi');
+                }
+              } catch (error) {
+                alert('Erreur lors de l\'envoi du message');
+              }
+            }} className="bg-white rounded-2xl shadow-xl p-8 space-y-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-visible">
               {/* Ombre en haut de la boîte de contact mobile */}
               <div className="absolute left-0 top-0 w-full h-4 rounded-t-2xl shadow-[0_-8px_16px_-8px_rgba(0,0,0,0.15)] pointer-events-none z-20" />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">Nom</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ex : Dupont" />
+                  <input name="nom" type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ex : Dupont" required />
                 </div>
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">Prénom</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ex : Marie" />
+                  <input name="prenom" type="text" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ex : Marie" required />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">Numéro de téléphone</label>
-                  <input type="tel" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ex : 06 12 34 56 78" />
+                  <input name="telephone" type="tel" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ex : 06 12 34 56 78" required />
                 </div>
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">Forfait souhaité</label>
-                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black text-gray-900">
-                    <option value="" disabled selected>Choisissez un forfait</option>
+                  <select name="forfait" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black text-gray-900" required>
+                    <option value="" disabled>Choisissez un forfait</option>
                     <option value="1h">1 séance 1h</option>
                     <option value="3h">3 séances 1h</option>
                     <option value="5h">5 séances 1h</option>
@@ -540,8 +571,8 @@ export default function Home() {
               </div>
               <div>
                 <label className="block text-gray-700 font-semibold mb-2">Lieux souhaité</label>
-                                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black text-gray-900">
-                    <option value="" disabled selected>Choisissez un lieu</option>
+                                  <select name="lieu" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black text-gray-900" required>
+                    <option value="" disabled>Choisissez un lieu</option>
                     <option value="anima">Centre Anima — 31, rue de Maubeuge, 75009 Paris</option>
                     <option value="kah">Studio KAH — 28, rue Bichat, 75010 Paris</option>
                     <option value="domicile">À domicile</option>
@@ -549,11 +580,11 @@ export default function Home() {
               </div>
               <div>
                 <label className="block text-gray-700 font-semibold mb-2">Adresse mail</label>
-                <input type="email" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ex : marie.dupont@email.com" />
+                <input name="email" type="email" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ex : marie.dupont@email.com" required />
               </div>
               <div>
                 <label className="block text-gray-700 font-semibold mb-2">Raison de la prise de rendez-vous</label>
-                <textarea className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" rows={4} placeholder="Ex : Douleurs au dos, envie de détente, gestion du stress..."></textarea>
+                <textarea name="raison" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black" rows={4} placeholder="Ex : Douleurs au dos, envie de détente, gestion du stress..."></textarea>
               </div>
               <div className="text-center pt-4">
                 <button type="submit" className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105">Envoyer</button>

@@ -321,9 +321,7 @@ export default function Home() {
                   C'EST QUOI LA RÉFLEXOLOGIE PLANTAIRE ?
                 </h3>
                 <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-6">
-                  La réflexologie est une approche <span className="font-bold text-black">thérapeutique et préventive</span> dont les fondements tissent leurs racines dans la médecine traditionnelle chinoise, et qui <span className="font-bold text-black">actualisée à nos vies "modernes"</span>.<br/>
-                  <span className="font-bold text-black">Stimulation de zones réflexes</span>.<br/>
-                  <span className="font-bold text-black">Circulation de l'énergie de l'ensemble du corps.</span>
+                  La réflexologie est une approche <span className="font-bold text-black">thérapeutique et préventive</span> dont les fondements tissent leurs racines dans la médecine traditionnelle chinoise, et qui <span className="font-bold text-black">actualisée à nos vies "modernes"</span> constitue une solution naturelle et non intrusive vers l'équilibre du corps et de son âme. Schématiquement, elle s'articule autour de la <span className="font-bold text-black">stimulation de zones réflexes</span> (des pieds, des mains, du visage, de la tête, etc.), qui par de simples mais précises pressions permettent d'agir sur la <span className="font-bold text-black">circulation de l'énergie de l'ensemble du corps</span>.
                 </p>
                 {/* Trait animé après la réponse, animé partout */}
                 <motion.div

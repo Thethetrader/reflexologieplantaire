@@ -493,6 +493,24 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Bouton RDV mobile avant la vidéo */}
+        <div className="block md:hidden w-full text-center py-8">
+          <button
+            onClick={() => {
+              const element = document.getElementById('contact');
+              if (element) {
+                const offset = 40;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+              }
+            }}
+            className="bg-black hover:bg-gray-800 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
+          >
+            Réserve ta séance
+          </button>
+        </div>
+        
         {/* Vidéo mobile avant la boîte de contact */}
         <div className="block md:hidden w-full relative z-20">
           <video 

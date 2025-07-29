@@ -15,6 +15,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Réflexologie Plantaire - Tom Robert",
   description: "Réflexologie plantaire à Paris. Séances de 1h à 80€. Cabinet Anima et Studio KAH. Prise de rendez-vous en ligne.",
+  icons: {
+    icon: '/logo-reflexologie-2025-lighter.jpg',
+    apple: '/logo-reflexologie-2025-lighter.jpg',
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Réflexologie Plantaire',
+  },
 };
 
 export default function RootLayout({

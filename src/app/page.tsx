@@ -521,14 +521,13 @@ export default function Home() {
                   whileInView={{ width: '100%', opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7 }}
-                  className="h-1 w-40 bg-gray-300 rounded-full mx-auto mb-8 md:hidden"
+                  className="h-1 w-40 bg-gray-300 rounded-full mx-auto mb-2 md:hidden"
                   style={{ maxWidth: 220 }}
                 />
               </div>
             </div>
           </div>
         </div>
-
 
         
         {/* Vidéo mobile avant la boîte de contact */}

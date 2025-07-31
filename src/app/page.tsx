@@ -430,13 +430,13 @@ export default function Home() {
                   </h2>
                   <div className="mb-2">
                     <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center max-w-2xl mx-auto">
-                      C'est <span className="text-black">80€</span> la séance de 1h, si tu en prends plusieurs c'est dégressif. 
+                      Une séance est à <span className="text-black">80€</span>, et dure une heure.
                     </p>
                     <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center max-w-2xl mx-auto">
-                      3 séances te coûteront <span className="text-black">200€</span>, 5 séances <span className="text-black">350€</span>.
+                      Dans le cadre de cure, un tarif dégressif s'applique.
                     </p>
                     <p className="text-base md:text-xl text-gray-700 leading-relaxed text-center max-w-2xl mx-auto mt-2">
-                      Si tu as une mutuelle qui prend en charge la médecine douce, je te fais une feuille de soin.
+                      Une feuille de soin peut être établie, pour les mutuelles qui prennent en charge la médecine douce.
                     </p>
                     {/* Trait animé sous la réponse tarif */}
                     <motion.div

@@ -158,7 +158,7 @@ export default function Home() {
             src="/logo-reflexologie-2025-lighter.jpg"
             alt="Reflexologie background"
             fill
-            className="object-contain h-40 md:object-contain md:h-auto mt-0 md:mt-0"
+            className="object-contain h-40 md:object-contain md:h-auto -mt-8 md:mt-0"
             style={{ objectPosition: 'center' }}
           priority
         />

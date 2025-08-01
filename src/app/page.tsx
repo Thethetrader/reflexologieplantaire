@@ -332,7 +332,7 @@ export default function Home() {
             <div className="space-y-8 text-center">
               
               {/* Question 1 */}
-              <div className="text-center mb-8 mt-8 md:mt-0">
+              <div className="text-center mb-8 mt-24 md:mt-0">
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">
                   C'EST QUOI LA RÉFLEXOLOGIE PLANTAIRE ?
                 </h3>
@@ -478,7 +478,7 @@ export default function Home() {
                 <h3 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 uppercase">MAIS EN FAIT, C'EST POUR QUI ?</h3>
                 <p className="text-lg md:text-2xl text-black font-bold uppercase mb-4">TOUS LE MONDE.</p>
                 {/* Bouton RDV mobile après TOUS LE MONDE */}
-                <div className="block md:hidden w-full text-center mb-4 mt-4">
+                <div className="block md:hidden w-full text-center mb-4 mt-12">
                   <button
                     onClick={() => {
                       const element = document.getElementById('contact');

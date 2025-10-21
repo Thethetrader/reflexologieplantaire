@@ -168,7 +168,7 @@ export default function Home() {
 
         {/* Content */}
         <div className="flex flex-col items-center justify-center absolute inset-0 z-10 mt-32 md:mt-[56rem]">
-          <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-8 md:mt-80">REFLEXOLOGIE PLANTAIRE</h1>
+          <h1 className="text-2xl md:text-8xl font-bold mb-6 md:mb-8 leading-tight text-black text-center mt-16 md:mt-8">REFLEXOLOGIE PLANTAIRE</h1>
           <button 
             onClick={() => {
               const element = document.getElementById('contact');
